@@ -23,7 +23,7 @@ public class PlayerAttackArea : PlayerAbstract
         this.hitBox4 = transform.Find("PlayerAttackArea_4");
         Debug.Log(transform.name + ": LoadHitBox", gameObject);
     }
-    protected void Update()
+    private void Update()
     {
         this.OnAttackArea();
         this.OffAttackArea();
@@ -32,10 +32,10 @@ public class PlayerAttackArea : PlayerAbstract
     protected void OnAttackArea()
     {
         if (this.playerCtrl.PlayerMovement.SwitchWeapon) return;
-        this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Right, this.hitBox1);
-        this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Left, this.hitBox2);
-        this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Down, this.hitBox3);
-        this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Up, this.hitBox4);
+        this.GetOnAttackArea(this.playerCtrl.PlayerFlipDirect.Right, this.hitBox1);
+        this.GetOnAttackArea(this.playerCtrl.PlayerFlipDirect.Left, this.hitBox2);
+        this.GetOnAttackArea(this.playerCtrl.PlayerFlipDirect.Down, this.hitBox3);
+        this.GetOnAttackArea(this.playerCtrl.PlayerFlipDirect.Up, this.hitBox4);
     }
     protected void GetOnAttackArea(bool _bool, Transform _hitBox)
     {

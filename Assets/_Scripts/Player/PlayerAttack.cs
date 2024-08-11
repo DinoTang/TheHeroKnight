@@ -10,7 +10,7 @@ public class PlayerAttack : PlayerAbstract
     [SerializeField] protected float attackTime = 0.5f;
     [SerializeField] protected float attackTimeCounter = 0f;
 
-    protected void Update()
+    private void Update()
     {
         this.GetInputAttack();
         this.SetTimeAttack();
@@ -18,7 +18,7 @@ public class PlayerAttack : PlayerAbstract
 
     protected void GetInputAttack()
     {
-        if (Input.GetKeyDown(KeyCode.J)) this.attack = true;
+        this.attack = InputManager.Instance.InputAttack;
     }
 
     protected void SetTimeAttack()
@@ -30,5 +30,6 @@ public class PlayerAttack : PlayerAbstract
         this.attackTimeCounter = 0f;
 
         this.attack = false;
+        InputManager.Instance.SetAttack(false);
     }
 }

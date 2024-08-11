@@ -9,16 +9,23 @@ public class PlayerCtrl : DinoBehaviourScript
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected PlayerAttack playerAttack;
     [SerializeField] protected PlayerAttackArea playerAttackArea;
+    [SerializeField] protected PlayerFlipDirect playerFlipDirect;
+    [SerializeField] protected PlayerDash playerDash;
     public Animator Anim => anim;
     public PlayerMovement PlayerMovement => playerMovement;
     public PlayerAttack PlayerAttack => playerAttack;
     public PlayerAttackArea PlayerAttackArea => playerAttackArea;
+    public PlayerFlipDirect PlayerFlipDirect => playerFlipDirect;
+    public PlayerDash PlayerDash => playerDash;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadAnimator();
         this.LoadPlayerMovement();
         this.LoadPlayerAttack();
+        this.LoadPlayerAttackArea();
+        this.LoadPlayerFlipDirect();
+        this.LoadPlayerDash();
     }
 
     protected void LoadAnimator()
@@ -40,5 +47,22 @@ public class PlayerCtrl : DinoBehaviourScript
         this.playerAttack = GetComponentInChildren<PlayerAttack>();
         Debug.Log(transform.name + ":LoadPlayerAttack", gameObject);
     }
-
+    protected void LoadPlayerAttackArea()
+    {
+        if (this.playerAttackArea != null) return;
+        this.playerAttackArea = GetComponentInChildren<PlayerAttackArea>();
+        Debug.Log(transform.name + ":LoadPlayerAttackArea", gameObject);
+    }
+    protected void LoadPlayerFlipDirect()
+    {
+        if (this.playerFlipDirect != null) return;
+        this.playerFlipDirect = GetComponentInChildren<PlayerFlipDirect>();
+        Debug.Log(transform.name + ":LoadPlayerFlipDirect", gameObject);
+    }
+    protected void LoadPlayerDash()
+    {
+        if (this.playerDash != null) return;
+        this.playerDash = GetComponentInChildren<PlayerDash>();
+        Debug.Log(transform.name + ":LoadPlayerDash", gameObject);
+    }
 }

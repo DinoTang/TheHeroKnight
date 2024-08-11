@@ -6,7 +6,7 @@ public class PlayerAnimation : PlayerAbstract
 {
     // [Header("Player Animation")]
 
-    protected void Update()
+    private void Update()
     {
         this.SetAnimation();
     }
@@ -31,10 +31,10 @@ public class PlayerAnimation : PlayerAbstract
 
     protected void SetDirection()
     {
-        this.playerCtrl.Anim.SetBool("Right", this.playerCtrl.PlayerMovement.Right);
-        this.playerCtrl.Anim.SetBool("Left", this.playerCtrl.PlayerMovement.Left);
-        this.playerCtrl.Anim.SetBool("Down", this.playerCtrl.PlayerMovement.Down);
-        this.playerCtrl.Anim.SetBool("Up", this.playerCtrl.PlayerMovement.Up);
+        this.playerCtrl.Anim.SetBool("Right", this.playerCtrl.PlayerFlipDirect.Right);
+        this.playerCtrl.Anim.SetBool("Left", this.playerCtrl.PlayerFlipDirect.Left);
+        this.playerCtrl.Anim.SetBool("Down", this.playerCtrl.PlayerFlipDirect.Down);
+        this.playerCtrl.Anim.SetBool("Up", this.playerCtrl.PlayerFlipDirect.Up);
     }
     protected void SetAnimAttack()
     {

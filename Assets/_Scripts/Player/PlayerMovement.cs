@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
-
 public class PlayerMovement : PlayerAbstract
 {
     [Header("Player Movement")]
@@ -10,21 +10,20 @@ public class PlayerMovement : PlayerAbstract
     [SerializeField] protected float horizontal;
     [SerializeField] protected float vertical;
     [SerializeField] protected bool switchWeapon;
-    [SerializeField] protected bool right;
-    [SerializeField] protected bool left;
-    [SerializeField] protected bool up;
-    [SerializeField] protected bool down = true;
+    public Rigidbody2D _Rb => _rb;
     public float Horizontal => horizontal;
     public float Vertical => vertical;
     public bool SwitchWeapon => switchWeapon;
-    public bool Right => right;
-    public bool Down => down;
-    public bool Left => left;
-    public bool Up => up;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadRigidbody();
+    }
+    private void FixedUpdate()
+    {
+        this.GetInput();
+        this.Moving();
+        this.ChangeWeapon();
     }
     protected void LoadRigidbody()
     {
@@ -32,58 +31,22 @@ public class PlayerMovement : PlayerAbstract
         this._rb = GetComponentInParent<Rigidbody2D>();
         Debug.Log(transform.name + ": LoadRigidbody", gameObject);
     }
-    private void FixedUpdate()
+    protected void GetInput()
     {
-        
-        this.Moving();
-        this.SetDirect();
-        this.ChangeWeapon();
+        this.horizontal = InputManager.Instance.InputHorizontal;
+        this.vertical = InputManager.Instance.InputVertical;
     }
     protected void Moving()
     {
-
-        this.horizontal = InputManager.Instance.InputHorizontal;
-        this.vertical = InputManager.Instance.InputVertical;
-
-        this.Move();
-
-    }
-    protected void Move()
-    {
-
+        if (this.playerCtrl.PlayerDash.IsDashing) return;
         this._rb.velocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
-    }
-    protected void SetDirect()
-    {
-        if (this.TerminateCondition()) return;
-        if (this.vertical < 0)
-        {
-            this.down = true;
-            this.up = this.left = this.right = false;
-        }
-        if (this.horizontal > 0)
-        {
-            this.right = true;
-            this.down = this.left = this.up = false;
-        }
-        if (this.horizontal < 0)
-        {
-            this.left = true;
-            this.down = this.up = this.right = false;
-        }
-        if (this.vertical > 0)
-        {
-            this.up = true;
-            this.down = this.left = this.right = false;
-        }
     }
     protected void ChangeWeapon()
     {
         if (this.TerminateCondition()) return;
         this.switchWeapon = InputManager.Instance.InputSwitchWeapon;
     }
-
-    protected bool TerminateCondition()
+    public bool TerminateCondition()
     {
         if (!this.playerCtrl.PlayerAttack.Attack) return false;
         return true;
