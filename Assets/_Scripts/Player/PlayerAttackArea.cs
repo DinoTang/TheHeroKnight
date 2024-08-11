@@ -31,6 +31,7 @@ public class PlayerAttackArea : PlayerAbstract
 
     protected void OnAttackArea()
     {
+        if (this.playerCtrl.PlayerMovement.SwitchWeapon) return;
         this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Right, this.hitBox1);
         this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Left, this.hitBox2);
         this.GetOnAttackArea(this.playerCtrl.PlayerMovement.Down, this.hitBox3);
@@ -43,6 +44,7 @@ public class PlayerAttackArea : PlayerAbstract
     }
     protected void OffAttackArea()
     {
+        if (this.playerCtrl.PlayerMovement.SwitchWeapon) return;
         this.GetOffAttackArea(this.hitBox1);
         this.GetOffAttackArea(this.hitBox2);
         this.GetOffAttackArea(this.hitBox3);

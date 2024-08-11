@@ -7,10 +7,10 @@ public class DamageReceiver : DinoBehaviourScript
     [Header("Damage Receiver")]
     [SerializeField] protected int hp;
     [SerializeField] protected int hpMax = 10;
-    [SerializeField] protected bool dead;
+    [SerializeField] protected bool isDead;
     public int Hp => hp;
     public int HPMax => hpMax;
-    public bool Dead => dead;
+    public bool IsDead => isDead;
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -24,26 +24,35 @@ public class DamageReceiver : DinoBehaviourScript
     protected void Reborn()
     {
         this.hp = hpMax;
-        this.dead = false;
+        this.isDead = false;
     }
     protected virtual void Add(int hp)
     {
-        if (this.dead) return;
+        if (this.isDead) return;
         this.hp += hp;
         if (this.hp >= this.hpMax) this.hp = this.hpMax;
     }
 
     public virtual void Deduct(int damage)
     {
-        if (this.dead) return;
+        if (this.isDead) return;
         this.hp -= damage;
         if (this.hp <= 0) this.hp = 0;
-        this.IsDead();
-    }
+        this.IsDeaded();
 
-    protected void IsDead()
+    }
+    protected bool CheckDead()
     {
-        if (!this.dead) return;
-        this.dead = true;
+        return this.hp <= 0;
+    }
+    protected void IsDeaded()
+    {
+        if (!this.CheckDead()) return;
+        this.isDead = true;
+        this.OnDead();
+    }
+    protected virtual void OnDead()
+    {
+
     }
 }
