@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : DinoBehaviourScript
+public class PlayerMovement : PlayerAbstract
 {
     [Header("Player Movement")]
     [SerializeField] protected Rigidbody2D _rb;
-    [SerializeField] protected int speed = 10;
+    [SerializeField] protected int speed = 5;
     [SerializeField] protected float horizontal;
     [SerializeField] protected float vertical;
     [SerializeField] protected bool switchWeapon;
@@ -23,6 +23,7 @@ public class PlayerMovement : DinoBehaviourScript
     public bool Up => up;
     protected override void LoadComponent()
     {
+        base.LoadComponent();
         this.LoadRigidbody();
     }
     protected void LoadRigidbody()
@@ -33,12 +34,14 @@ public class PlayerMovement : DinoBehaviourScript
     }
     private void FixedUpdate()
     {
+        
         this.Moving();
         this.SetDirect();
         this.ChangeWeapon();
     }
     protected void Moving()
     {
+
         this.horizontal = InputManager.Instance.InputHorizontal;
         this.vertical = InputManager.Instance.InputVertical;
 
@@ -47,10 +50,12 @@ public class PlayerMovement : DinoBehaviourScript
     }
     protected void Move()
     {
+
         this._rb.velocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
     }
     protected void SetDirect()
     {
+        if (this.TerminateCondition()) return;
         if (this.vertical < 0)
         {
             this.down = true;
@@ -72,9 +77,15 @@ public class PlayerMovement : DinoBehaviourScript
             this.down = this.left = this.right = false;
         }
     }
-    protected bool ChangeWeapon()
+    protected void ChangeWeapon()
     {
+        if (this.TerminateCondition()) return;
         this.switchWeapon = InputManager.Instance.InputSwitchWeapon;
-        return this.switchWeapon;
+    }
+
+    protected bool TerminateCondition()
+    {
+        if (!this.playerCtrl.PlayerAttack.Attack) return false;
+        return true;
     }
 }

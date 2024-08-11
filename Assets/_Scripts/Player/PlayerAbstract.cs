@@ -16,8 +16,8 @@ public class PlayerAbstract : DinoBehaviourScript
 
     protected void LoadPlayerCtrl()
     {
-        if(this.playerCtrl != null) return;
-        this.playerCtrl = GetComponentInParent<PlayerCtrl>();
+        if (this.playerCtrl != null) return;
+        this.playerCtrl = transform.parent.GetComponent<PlayerCtrl>();
         Debug.Log(transform.name + ": LoadPlayerCtrl", gameObject);
     }
 }

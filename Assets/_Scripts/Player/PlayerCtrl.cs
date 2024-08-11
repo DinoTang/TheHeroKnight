@@ -8,9 +8,11 @@ public class PlayerCtrl : DinoBehaviourScript
     [SerializeField] protected Animator anim;
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected PlayerAttack playerAttack;
+    [SerializeField] protected PlayerAttackArea playerAttackArea;
     public Animator Anim => anim;
     public PlayerMovement PlayerMovement => playerMovement;
     public PlayerAttack PlayerAttack => playerAttack;
+    public PlayerAttackArea PlayerAttackArea => playerAttackArea;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -38,4 +40,5 @@ public class PlayerCtrl : DinoBehaviourScript
         this.playerAttack = GetComponentInChildren<PlayerAttack>();
         Debug.Log(transform.name + ":LoadPlayerAttack", gameObject);
     }
+
 }
