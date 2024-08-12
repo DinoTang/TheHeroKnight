@@ -17,6 +17,7 @@ public class PlayerAnimation : PlayerAbstract
         this.SetAnimWalk();
         this.SetSwitchWeapon();
         this.SetAnimAttack();
+        this.SetAnimShoot();
     }
 
     protected void SetAnimWalk()
@@ -39,5 +40,9 @@ public class PlayerAnimation : PlayerAbstract
     protected void SetAnimAttack()
     {
         this.playerCtrl.Anim.SetBool("Attack", this.playerCtrl.PlayerAttack.Attack);
+    }
+    protected void SetAnimShoot()
+    {
+        this.playerCtrl.Anim.SetBool("Shoot", this.playerCtrl.PlayerShooting.Shoot);
     }
 }

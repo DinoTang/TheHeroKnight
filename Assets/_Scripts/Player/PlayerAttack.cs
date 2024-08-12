@@ -13,15 +13,16 @@ public class PlayerAttack : PlayerAbstract
     private void Update()
     {
         this.GetInputAttack();
-        this.SetTimeAttack();
+        this.Attacking();
     }
 
     protected void GetInputAttack()
     {
+        if (this.playerCtrl.PlayerMovement.SwitchWeapon) return;
         this.attack = InputManager.Instance.InputAttack;
     }
 
-    protected void SetTimeAttack()
+    protected void Attacking()
     {
         if (!this.attack) return;
 

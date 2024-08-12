@@ -8,12 +8,14 @@ public class PlayerCtrl : DinoBehaviourScript
     [SerializeField] protected Animator anim;
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected PlayerAttack playerAttack;
+    [SerializeField] protected PlayerShooting playerShooting;
     [SerializeField] protected PlayerAttackArea playerAttackArea;
     [SerializeField] protected PlayerFlipDirect playerFlipDirect;
     [SerializeField] protected PlayerDash playerDash;
     public Animator Anim => anim;
     public PlayerMovement PlayerMovement => playerMovement;
     public PlayerAttack PlayerAttack => playerAttack;
+    public PlayerShooting PlayerShooting => playerShooting;
     public PlayerAttackArea PlayerAttackArea => playerAttackArea;
     public PlayerFlipDirect PlayerFlipDirect => playerFlipDirect;
     public PlayerDash PlayerDash => playerDash;
@@ -23,6 +25,7 @@ public class PlayerCtrl : DinoBehaviourScript
         this.LoadAnimator();
         this.LoadPlayerMovement();
         this.LoadPlayerAttack();
+        this.LoadPlayerShooting();
         this.LoadPlayerAttackArea();
         this.LoadPlayerFlipDirect();
         this.LoadPlayerDash();
@@ -46,6 +49,12 @@ public class PlayerCtrl : DinoBehaviourScript
         if (this.playerAttack != null) return;
         this.playerAttack = GetComponentInChildren<PlayerAttack>();
         Debug.Log(transform.name + ":LoadPlayerAttack", gameObject);
+    }
+    protected void LoadPlayerShooting()
+    {
+        if (this.playerShooting != null) return;
+        this.playerShooting = GetComponentInChildren<PlayerShooting>();
+        Debug.Log(transform.name + ":LoadPlayerShooting", gameObject);
     }
     protected void LoadPlayerAttackArea()
     {
