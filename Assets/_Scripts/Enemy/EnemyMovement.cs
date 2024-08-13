@@ -1,8 +1,9 @@
 using UnityEngine;
 
 
-public class EnemyMovement : DinoBehaviourScript
+public class EnemyMovement : EnemyAbstract
 {
+    [Header("Enemy Movment")]
     [SerializeField] protected Transform homePoint;
     [SerializeField] protected float speed = 2f;
     [SerializeField] protected float distance;
@@ -10,8 +11,10 @@ public class EnemyMovement : DinoBehaviourScript
     [SerializeField] protected float moveTime = 2f;
     [SerializeField] protected float moveTimeCounter = 0f;
     [SerializeField] protected bool isMoving;
-    private Vector2 wayPoint;
+    protected Vector2 wayPoint;
+    public Vector2 WayPoint => wayPoint;
     public bool IsMoving => isMoving;
+    public float Speed => speed;
     protected override void Start()
     {
         this.SetNewDestination();
@@ -27,17 +30,25 @@ public class EnemyMovement : DinoBehaviourScript
         this.homePoint = GameObject.Find("HomePoint").transform;
         Debug.Log(transform.name + ": LoadHomePoint", gameObject);
     }
-    void Update()
+    protected void FixedUpdate()
     {
+        this.PlayMoving();
+    }
+    protected void PlayMoving()
+    {
+        if (this.enemyCtrl.EnemyDetect.IsDetect)
+        {
+            this.isMoving = true;
+            return;
+        }
         this.Moving();
-        this.FlipDirect();
         this.StopMoving();
     }
     protected void Moving()
     {
         this.isMoving = true;
         transform.parent.position = Vector2.MoveTowards(transform.parent.position, this.wayPoint,
-        this.speed * Time.deltaTime);
+        this.speed * Time.fixedDeltaTime);
     }
     protected void StopMoving()
     {
@@ -49,7 +60,6 @@ public class EnemyMovement : DinoBehaviourScript
             if (this.moveTimeCounter < this.moveTime) return;
             this.moveTimeCounter = 0;
             this.SetNewDestination();
-
         }
     }
     protected void SetNewDestination()
@@ -60,13 +70,5 @@ public class EnemyMovement : DinoBehaviourScript
             Random.Range(-this.distanceMax, this.distanceMax)
         );
     }
-    protected void FlipDirect()
-    {
-        float direction = wayPoint.x - transform.parent.position.x;
-
-        if (direction >= 0)
-            transform.parent.localScale = new Vector3(1, 1, 1);
-        else
-            transform.parent.localScale = new Vector3(-1, 1, 1);
-    }
+    
 }
