@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : PlayerAbstract
+public class PlayerAnimation : AnimationAbtract
 {
-    // [Header("Player Animation")]
+    [Header("Player Animation")]
+    [SerializeField] protected PlayerCtrl playerCtrl;
 
-    private void Update()
+    protected override void LoadComponent()
     {
-        this.SetAnimation();
+        base.LoadComponent();
+        this.LoadPlayerCtrl();
     }
-
-    protected void SetAnimation()
+    protected void LoadPlayerCtrl()
     {
+        if (this.playerCtrl != null) return;
+        this.playerCtrl = GetComponentInParent<PlayerCtrl>();
+        Debug.Log(transform.name + ": LoadPlayerCtrl", gameObject);
+    }
+    protected override void SetAnimation()
+    {
+        base.SetAnimation();
         this.SetDirection();
-        this.SetAnimWalk();
         this.SetSwitchWeapon();
-        this.SetAnimAttack();
-        this.SetAnimShoot();
     }
 
-    protected void SetAnimWalk()
+    protected override void SetAnimWalk()
     {
         this.playerCtrl.Anim.SetFloat("velocity.x", this.playerCtrl.PlayerMovement.Horizontal);
         this.playerCtrl.Anim.SetFloat("velocity.y", this.playerCtrl.PlayerMovement.Vertical);
@@ -29,7 +34,6 @@ public class PlayerAnimation : PlayerAbstract
     {
         this.playerCtrl.Anim.SetBool("SwitchWeapon", this.playerCtrl.PlayerMovement.SwitchWeapon);
     }
-
     protected void SetDirection()
     {
         this.playerCtrl.Anim.SetBool("Right", this.playerCtrl.PlayerFlipDirect.Right);
@@ -37,11 +41,11 @@ public class PlayerAnimation : PlayerAbstract
         this.playerCtrl.Anim.SetBool("Down", this.playerCtrl.PlayerFlipDirect.Down);
         this.playerCtrl.Anim.SetBool("Up", this.playerCtrl.PlayerFlipDirect.Up);
     }
-    protected void SetAnimAttack()
+    protected override void SetAnimAttack()
     {
         this.playerCtrl.Anim.SetBool("Attack", this.playerCtrl.PlayerAttack.Attack);
     }
-    protected void SetAnimShoot()
+    protected override void SetAnimShoot()
     {
         this.playerCtrl.Anim.SetBool("Shoot", this.playerCtrl.PlayerShooting.Shoot);
     }
