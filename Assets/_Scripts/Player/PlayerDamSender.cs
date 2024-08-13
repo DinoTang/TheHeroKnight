@@ -24,6 +24,6 @@ public class PlayerDamSender : DamageSender
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        this.Send(other.transform);
+        this.SendToTransform(other.transform);
     }
 }

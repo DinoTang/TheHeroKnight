@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArrowDespawn : DespawnByDistance
 {
-    protected override void DespawnObj()
+    public override void DespawnObj()
     {
         ArrowSpawn.Instance.Despawn(transform.parent);
     }

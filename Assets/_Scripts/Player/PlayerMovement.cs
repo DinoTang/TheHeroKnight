@@ -48,7 +48,7 @@ public class PlayerMovement : PlayerAbstract
     }
     public bool TerminateCondition()
     {
-        if (!this.playerCtrl.PlayerAttack.Attack) return false;
+        if (!this.playerCtrl.PlayerAttack.Attack && !this.playerCtrl.PlayerShooting.Shoot) return false;
         return true;
     }
 }

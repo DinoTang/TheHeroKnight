@@ -14,7 +14,7 @@ public abstract class Despawn : DinoBehaviourScript
         if (!this.CanDespawn()) return;
         this.DespawnObj();
     }
-    protected virtual void DespawnObj()
+    public virtual void DespawnObj()
     {
         Destroy(transform.parent.gameObject);
     }

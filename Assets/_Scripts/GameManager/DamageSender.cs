@@ -8,14 +8,14 @@ public class DamageSender : DinoBehaviourScript
     [SerializeField] protected int damage = 1;
     public int Damage => damage;
 
-    protected void Send(Transform collider)
+    protected virtual void SendToTransform(Transform collider)
     {
         DamageReceiver damageReceiver = collider.GetComponent<DamageReceiver>();
         if (damageReceiver == null) return;
-        this.Send(damageReceiver);
+        this.SendToDamReceive(damageReceiver);
     }
 
-    protected void Send(DamageReceiver damageReceiver)
+    protected void SendToDamReceive(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
     }

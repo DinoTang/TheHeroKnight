@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Spawner : DinoBehaviourScript
+public abstract class Spawner : DinoBehaviourScript
 {
     [Header("Spawner")]
     [SerializeField] protected Transform holder;
