@@ -1,42 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(CircleCollider2D))]
 public class EnemyDetectPlayer : EnemyAbstract
 {
     [Header("Enemy Detect Player")]
-    [SerializeField] protected CircleCollider2D collide;
-    [SerializeField] protected Vector2 direction;
-    [SerializeField] protected bool isDetect;
-    public Vector2 Diretion => direction;
-    public bool IsDetect => isDetect;
-    protected override void LoadComponent()
+    [SerializeField] protected bool detect = false;
+    [SerializeField] protected float directionRange = 6f;
+    public bool Detect => detect;
+    protected void FixedUpdate()
     {
-        base.LoadComponent();
-        this.LoadCollider();
+        this.DetectPlayer();
     }
-    protected void LoadCollider()
+    protected void DetectPlayer()
     {
-        if (this.collide != null) return;
-        this.collide = GetComponent<CircleCollider2D>();
-        this.collide.isTrigger = true;
-        this.collide.radius = 3;
-        Debug.Log(transform.name + ": LoadCollider", gameObject);
+        Vector3 playerPos = this.enemyCtrl.EnemyFollow.Target.position;
+
+        if (!this.CheckDetect(playerPos)) return;
+
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, playerPos - transform.position);
+
+        if (ray.collider == null) return;
+
+        if (ray.collider.CompareTag("Player") || ray.collider.CompareTag("AttackArea")) this.detect = true;
+        else this.detect = false;
+
+        Color color = this.detect ? Color.green : Color.red;
+        Debug.DrawRay(transform.position, playerPos - transform.position, color);
     }
 
-    protected void OnTriggerStay2D(Collider2D other)
+    protected bool CheckDetect(Vector3 playerPos)
     {
-        if (other.transform.parent.gameObject.CompareTag("Player"))
+        float distanceToPlayer = Vector2.Distance(transform.position, playerPos);
+        if (distanceToPlayer > this.directionRange)
         {
-            this.direction = other.transform.parent.position - transform.parent.position;
-            this.isDetect = true;
+            this.detect = false;
+            return false;
         }
-    }
-    protected void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.transform.parent.gameObject.CompareTag("Player"))
-        {
-            this.isDetect = false;
-        }
+        return true;
     }
 }

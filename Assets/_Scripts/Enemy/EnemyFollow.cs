@@ -6,7 +6,7 @@ public class EnemyFollow : EnemyAbstract
 {
     [Header("Enemy Follow")]
     [SerializeField] protected Transform target;
-
+    public Transform Target => target;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -18,15 +18,14 @@ public class EnemyFollow : EnemyAbstract
         this.target = GameObject.Find("Player").transform;
         Debug.Log(transform.name + ": LoadTarget", gameObject);
     }
-    protected void FixedUpdate()
+    protected void Update()
     {
         this.Following();
     }
     protected void Following()
     {
-        if (!this.enemyCtrl.EnemyDetect.IsDetect) return;
-
+        if (!this.enemyCtrl.EnemyDetect.Detect) return;
         transform.parent.position = Vector2.MoveTowards(transform.position, this.target.position,
-        this.enemyCtrl.EnemyMovement.Speed * Time.fixedDeltaTime);
+        this.enemyCtrl.EnemyMovement.Speed * Time.deltaTime);
     }
 }

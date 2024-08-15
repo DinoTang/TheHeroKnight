@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFlipDirect : EnemyAbstract
 {
     // [Header("Enemy Flip Direct")]
-    protected void FixedUpdate()
+    protected void Update()
     {
         this.Flipping();
     }
@@ -18,19 +18,19 @@ public class EnemyFlipDirect : EnemyAbstract
     }
     protected void FlipWithWayPoint()
     {
-        if (this.enemyCtrl.EnemyDetect.IsDetect) return;
-        float direction = this.enemyCtrl.EnemyMovement.WayPoint.x - transform.parent.position.x;
-        if (direction > 0 && transform.parent.localScale.x == -1)
-            transform.parent.localScale = new Vector3(1, 1, 1);
-        else if (direction < 0 && transform.parent.localScale.x == 1)
-            transform.parent.localScale = new Vector3(-1, 1, 1);
+        if (this.enemyCtrl.EnemyDetect.Detect) return;
+        float directWayPoint = this.enemyCtrl.EnemyMovement.WayPoint.x - transform.parent.position.x;
+        this.Flip(directWayPoint);
     }
     protected void FlipWithPlayer()
     {
-        if (!this.enemyCtrl.EnemyDetect.IsDetect) return;
-        if (this.enemyCtrl.EnemyDetect.Diretion.x > 0 && transform.parent.localScale.x == -1)
-            transform.parent.localScale = new Vector3(1, 1, 1);
-        if (this.enemyCtrl.EnemyDetect.Diretion.x < 0 && transform.parent.localScale.x == 1)
-            transform.parent.localScale = new Vector3(-1, 1, 1);
+        if (!this.enemyCtrl.EnemyDetect.Detect) return;
+        float directPlayer = this.enemyCtrl.EnemyFollow.Target.position.x - transform.parent.position.x;
+        this.Flip(directPlayer);
+    }
+    protected void Flip(float direct)
+    {
+        if (direct > 0 && transform.parent.localScale.x == -1) transform.parent.localScale = new Vector3(1, 1, 1);
+        if (direct < 0 && transform.parent.localScale.x == 1) transform.parent.localScale = new Vector3(-1, 1, 1);
     }
 }

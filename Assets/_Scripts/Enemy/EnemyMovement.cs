@@ -1,6 +1,4 @@
 using UnityEngine;
-
-
 public class EnemyMovement : EnemyAbstract
 {
     [Header("Enemy Movment")]
@@ -15,10 +13,6 @@ public class EnemyMovement : EnemyAbstract
     public Vector2 WayPoint => wayPoint;
     public bool IsMoving => isMoving;
     public float Speed => speed;
-    protected override void Start()
-    {
-        this.SetNewDestination();
-    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -36,7 +30,7 @@ public class EnemyMovement : EnemyAbstract
     }
     protected void PlayMoving()
     {
-        if (this.enemyCtrl.EnemyDetect.IsDetect)
+        if (this.enemyCtrl.EnemyDetect.Detect)
         {
             this.isMoving = true;
             return;
@@ -70,5 +64,4 @@ public class EnemyMovement : EnemyAbstract
             Random.Range(-this.distanceMax, this.distanceMax)
         );
     }
-    
 }
