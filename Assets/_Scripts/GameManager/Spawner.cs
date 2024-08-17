@@ -9,6 +9,8 @@ public abstract class Spawner : DinoBehaviourScript
     [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObj;
+    [SerializeField] protected int spawnCount;
+    public int SpawnCount => spawnCount;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -70,18 +72,24 @@ public abstract class Spawner : DinoBehaviourScript
         }
         return Spawn(prefab, spawnPos, spawnRot);
     }
-    protected Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion spawnRot)
+    public Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion spawnRot)
     {
         Transform newPrefab = this.GetObjFromPool(prefab);
         newPrefab.SetPositionAndRotation(spawnPos, spawnRot);
         newPrefab.parent = this.holder;
         newPrefab.gameObject.SetActive(true);
+        this.spawnCount++;
         return newPrefab;
     }
     public void Despawn(Transform obj)
     {
         this.poolObj.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnCount--;
     }
-
+    public Transform GetRandomPrefab()
+    {
+        int rand = Random.Range(0, this.prefabs.Count);
+        return this.prefabs[rand];
+    }
 }

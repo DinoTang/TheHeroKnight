@@ -24,8 +24,10 @@ public class EnemyFollow : EnemyAbstract
     }
     protected void Following()
     {
+        if (this.enemyCtrl.EnemyDamReceive.IsDead) return;
+        if (this.enemyCtrl.EnemyDamReceive.IsHurt) return;
         if (!this.enemyCtrl.EnemyDetect.Detect) return;
-        transform.parent.position = Vector2.MoveTowards(transform.position, this.target.position,
-        this.enemyCtrl.EnemyMovement.Speed * Time.deltaTime);
+        this.enemyCtrl.Rigid.MovePosition(Vector2.MoveTowards
+        (transform.parent.position, this.target.position, this.enemyCtrl.EnemyMovement.Speed * Time.fixedDeltaTime));
     }
 }

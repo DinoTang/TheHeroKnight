@@ -23,6 +23,14 @@ public class EnemyAnimation : AnimationAbtract
     }
     protected override void SetAnimAttack()
     {
-
+        this.enemyCtrl.Anim.SetBool("Attack", this.enemyCtrl.EnemyAttack.IsAttack);
+    }
+    protected override void SetAnimHurt()
+    {
+        this.enemyCtrl.Anim.SetBool("Hurt", this.enemyCtrl.EnemyDamReceive.IsHurt);
+    }
+    protected override void SetAnimDead()
+    {
+        this.enemyCtrl.Anim.SetBool("Dead", this.enemyCtrl.EnemyDamReceive.IsDead);
     }
 }

@@ -5,7 +5,7 @@ public class EnemyMovement : EnemyAbstract
     [SerializeField] protected Transform homePoint;
     [SerializeField] protected float speed = 2f;
     [SerializeField] protected float distance;
-    [SerializeField] protected int distanceMax = 5;
+    [SerializeField] protected int distanceMax = 4;
     [SerializeField] protected float moveTime = 2f;
     [SerializeField] protected float moveTimeCounter = 0f;
     [SerializeField] protected bool isMoving;
@@ -30,6 +30,8 @@ public class EnemyMovement : EnemyAbstract
     }
     protected void PlayMoving()
     {
+        if (this.enemyCtrl.EnemyDamReceive.IsDead) return;
+        if (this.enemyCtrl.EnemyDamReceive.IsHurt) return;
         if (this.enemyCtrl.EnemyDetect.Detect)
         {
             this.isMoving = true;
@@ -41,8 +43,8 @@ public class EnemyMovement : EnemyAbstract
     protected void Moving()
     {
         this.isMoving = true;
-        transform.parent.position = Vector2.MoveTowards(transform.parent.position, this.wayPoint,
-        this.speed * Time.fixedDeltaTime);
+        this.enemyCtrl.Rigid.MovePosition(Vector2.MoveTowards
+        (transform.parent.position, this.wayPoint, this.speed * Time.fixedDeltaTime));
     }
     protected void StopMoving()
     {
@@ -56,7 +58,7 @@ public class EnemyMovement : EnemyAbstract
             this.SetNewDestination();
         }
     }
-    protected void SetNewDestination()
+    public void SetNewDestination()
     {
         Vector2 homePosition = (Vector2)homePoint.position;
         this.wayPoint = homePosition + new Vector2(

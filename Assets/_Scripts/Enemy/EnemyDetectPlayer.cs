@@ -13,6 +13,7 @@ public class EnemyDetectPlayer : EnemyAbstract
     }
     protected void DetectPlayer()
     {
+        if (!this.CanDetect()) return;
         Vector3 playerPos = this.enemyCtrl.EnemyFollow.Target.position;
 
         if (!this.CheckDetect(playerPos)) return;
@@ -21,13 +22,22 @@ public class EnemyDetectPlayer : EnemyAbstract
 
         if (ray.collider == null) return;
 
-        if (ray.collider.CompareTag("Player") || ray.collider.CompareTag("AttackArea")) this.detect = true;
+        if (ray.collider.CompareTag("Player") || ray.collider.CompareTag("PlayerAttackArea")
+        || ray.collider.CompareTag("AttackArea")) this.detect = true;
         else this.detect = false;
 
         Color color = this.detect ? Color.green : Color.red;
         Debug.DrawRay(transform.position, playerPos - transform.position, color);
     }
-
+    protected bool CanDetect()
+    {
+        if (this.enemyCtrl.EnemyFollow.Target.position.z == 1)//Check Player Die
+        {
+            this.detect = false;
+            return false;
+        }
+        return true;
+    }
     protected bool CheckDetect(Vector3 playerPos)
     {
         float distanceToPlayer = Vector2.Distance(transform.position, playerPos);

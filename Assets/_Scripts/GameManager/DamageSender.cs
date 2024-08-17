@@ -19,4 +19,8 @@ public class DamageSender : DinoBehaviourScript
     {
         damageReceiver.Deduct(this.damage);
     }
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        this.SendToTransform(other.transform);
+    }
 }

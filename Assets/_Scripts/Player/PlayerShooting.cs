@@ -19,6 +19,8 @@ public class PlayerShooting : PlayerAbstract
 
     protected void GetInputShoot()
     {
+        if (this.playerCtrl.PlayerDamReceive.IsDead) return;
+        if (this.playerCtrl.PlayerDamReceive.IsHurt) return;
         if (!this.playerCtrl.PlayerMovement.SwitchWeapon) return;
         this.shoot = InputManager.Instance.InputAttack;
     }

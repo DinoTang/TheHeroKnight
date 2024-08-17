@@ -12,6 +12,7 @@ public class PlayerCtrl : DinoBehaviourScript
     [SerializeField] protected PlayerAttackArea playerAttackArea;
     [SerializeField] protected PlayerFlipDirect playerFlipDirect;
     [SerializeField] protected PlayerDash playerDash;
+    [SerializeField] protected PlayerDamReceive playerDamReceive;
     public Animator Anim => anim;
     public PlayerMovement PlayerMovement => playerMovement;
     public PlayerAttack PlayerAttack => playerAttack;
@@ -19,6 +20,7 @@ public class PlayerCtrl : DinoBehaviourScript
     public PlayerAttackArea PlayerAttackArea => playerAttackArea;
     public PlayerFlipDirect PlayerFlipDirect => playerFlipDirect;
     public PlayerDash PlayerDash => playerDash;
+    public PlayerDamReceive PlayerDamReceive => playerDamReceive;
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -29,6 +31,7 @@ public class PlayerCtrl : DinoBehaviourScript
         this.LoadPlayerAttackArea();
         this.LoadPlayerFlipDirect();
         this.LoadPlayerDash();
+        this.LoadPlayerDamReceive();
     }
 
     protected void LoadAnimator()
@@ -73,5 +76,11 @@ public class PlayerCtrl : DinoBehaviourScript
         if (this.playerDash != null) return;
         this.playerDash = GetComponentInChildren<PlayerDash>();
         Debug.Log(transform.name + ":LoadPlayerDash", gameObject);
+    }
+    protected void LoadPlayerDamReceive()
+    {
+        if (this.playerDamReceive != null) return;
+        this.playerDamReceive = GetComponentInChildren<PlayerDamReceive>();
+        Debug.Log(transform.name + ":LoadPlayerDamReceive", gameObject);
     }
 }

@@ -14,11 +14,14 @@ public abstract class AnimationAbtract : DinoBehaviourScript
         this.SetAnimWalk();
         this.SetAnimAttack();
         this.SetAnimShoot();
+        this.SetAnimHurt();
+        this.SetAnimDead();
     }
 
     protected abstract void SetAnimWalk();
-
     protected abstract void SetAnimAttack();
+    protected abstract void SetAnimHurt();
+    protected abstract void SetAnimDead();
     protected virtual void SetAnimShoot()
     {
 

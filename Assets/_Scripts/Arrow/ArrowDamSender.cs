@@ -23,9 +23,9 @@ public class ArrowDamSender : DamageSender
         base.SendToTransform(collider);
         this.arrowCtrl.ArrowDespawn.DespawnObj();
     }
-    protected void OnTriggerEnter2D(Collider2D collider)
+    protected override void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.transform.parent == this.arrowCtrl.Shooter) return;
-        this.SendToTransform(collider.transform);
+        base.OnTriggerEnter2D(collider);
     }
 }

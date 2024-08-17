@@ -18,6 +18,8 @@ public class PlayerAttack : PlayerAbstract
 
     protected void GetInputAttack()
     {
+        if (this.playerCtrl.PlayerDamReceive.IsDead) return;
+        if (this.playerCtrl.PlayerDamReceive.IsHurt) return;
         if (this.playerCtrl.PlayerMovement.SwitchWeapon) return;
         this.attack = InputManager.Instance.InputAttack;
     }

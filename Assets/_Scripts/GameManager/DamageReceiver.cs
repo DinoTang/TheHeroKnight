@@ -7,9 +7,13 @@ public class DamageReceiver : DinoBehaviourScript
     [Header("Damage Receiver")]
     [SerializeField] protected int hp;
     [SerializeField] protected int hpMax = 10;
+    [SerializeField] protected bool isHurt;
     [SerializeField] protected bool isDead;
+    public float hurtTime = 1f;
+    public float hurtTimeCounter = 0f;
     public int Hp => hp;
     public int HPMax => hpMax;
+    public bool IsHurt => isHurt;
     public bool IsDead => isDead;
     protected override void OnEnable()
     {
@@ -21,7 +25,11 @@ public class DamageReceiver : DinoBehaviourScript
         base.Start();
         this.Reborn();
     }
-    protected void Reborn()
+    protected virtual void Update()
+    {
+        this.Hurting();
+    }
+    protected virtual void Reborn()
     {
         this.hp = hpMax;
         this.isDead = false;
@@ -37,6 +45,7 @@ public class DamageReceiver : DinoBehaviourScript
     {
         if (this.isDead) return;
         this.hp -= damage;
+        this.isHurt = true;
         if (this.hp <= 0) this.hp = 0;
         this.IsDeaded();
 
@@ -54,5 +63,23 @@ public class DamageReceiver : DinoBehaviourScript
     protected virtual void OnDead()
     {
 
+    }
+    protected void Hurting()
+    {
+        if (this.isDead) return;
+        if (!this.isHurt) return;
+        this.Hurt();
+        this.StopHurt();
+    }
+    protected virtual void Hurt()
+    {
+
+    }
+    protected virtual void StopHurt()
+    {
+        this.hurtTimeCounter += Time.deltaTime;
+        if (this.hurtTimeCounter < this.hurtTime) return;
+        this.hurtTimeCounter = 0;
+        this.isHurt = false;
     }
 }

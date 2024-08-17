@@ -31,6 +31,7 @@ public class PlayerDash : PlayerAbstract
     }
     protected void GetInput()
     {
+        if (this.playerCtrl.PlayerDamReceive.IsDead) return;
         this.dash = InputManager.Instance.InputDash;
     }
     protected void Dashing()

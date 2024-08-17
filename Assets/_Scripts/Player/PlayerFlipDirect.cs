@@ -19,6 +19,7 @@ public class PlayerFlipDirect : PlayerAbstract
     }
     protected void SetDirect()
     {
+        if (this.playerCtrl.PlayerDamReceive.IsHurt) return;
         if (this.playerCtrl.PlayerMovement.TerminateCondition()) return;
         if (this.playerCtrl.PlayerMovement.Vertical < 0)
         {

@@ -49,4 +49,12 @@ public class PlayerAnimation : AnimationAbtract
     {
         this.playerCtrl.Anim.SetBool("Shoot", this.playerCtrl.PlayerShooting.Shoot);
     }
+    protected override void SetAnimHurt()
+    {
+        this.playerCtrl.Anim.SetBool("Hurt", this.playerCtrl.PlayerDamReceive.IsHurt);
+    }
+    protected override void SetAnimDead()
+    {
+        this.playerCtrl.Anim.SetBool("Dead", this.playerCtrl.PlayerDamReceive.IsDead);
+    }
 }

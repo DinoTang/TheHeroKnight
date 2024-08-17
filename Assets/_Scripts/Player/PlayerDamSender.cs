@@ -13,17 +13,11 @@ public class PlayerDamSender : DamageSender
         base.LoadComponent();
         this.LoadCollider();
     }
-
     protected void LoadCollider()
     {
         if (this.collide != null) return;
         this.collide = GetComponent<PolygonCollider2D>();
         this.collide.isTrigger = true;
         Debug.Log(transform.name + ": LoadCollider", gameObject);
-    }
-
-    protected void OnTriggerEnter2D(Collider2D other)
-    {
-        this.SendToTransform(other.transform);
     }
 }

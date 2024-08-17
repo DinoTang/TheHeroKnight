@@ -38,11 +38,13 @@ public class PlayerMovement : PlayerAbstract
     }
     protected void Moving()
     {
+        if (this.playerCtrl.PlayerDamReceive.IsDead) return;
         if (this.playerCtrl.PlayerDash.IsDashing) return;
         this._rb.velocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
     }
     protected void ChangeWeapon()
     {
+        if (this.playerCtrl.PlayerDamReceive.IsHurt) return;
         if (this.TerminateCondition()) return;
         this.switchWeapon = InputManager.Instance.InputSwitchWeapon;
     }

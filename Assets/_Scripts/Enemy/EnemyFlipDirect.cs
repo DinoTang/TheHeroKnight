@@ -12,6 +12,7 @@ public class EnemyFlipDirect : EnemyAbstract
 
     protected void Flipping()
     {
+        if (this.enemyCtrl.EnemyDamReceive.IsDead) return;
         this.FlipWithWayPoint();
         this.FlipWithPlayer();
 

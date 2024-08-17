@@ -6,29 +6,44 @@ public class EnemyCtrl : DinoBehaviourScript
 {
     [Header("Enemy Ctrl")]
     [SerializeField] protected Animator anim;
+    [SerializeField] protected Rigidbody2D rigid;
     [SerializeField] protected EnemyMovement enemyMovement;
     [SerializeField] protected EnemyFlipDirect enemyFlipDirect;
     [SerializeField] protected EnemyFollow enemyFollow;
     [SerializeField] protected EnemyDetectPlayer enemyDetect;
+    [SerializeField] protected EnemyAttack enemyAttack;
+    [SerializeField] protected EnemyDamReceive enemyDamReceive;
     public Animator Anim => anim;
+    public Rigidbody2D Rigid => rigid;
     public EnemyMovement EnemyMovement => enemyMovement;
     public EnemyFlipDirect EnemyFlipDirect => enemyFlipDirect;
     public EnemyFollow EnemyFollow => enemyFollow;
     public EnemyDetectPlayer EnemyDetect => enemyDetect;
+    public EnemyAttack EnemyAttack => enemyAttack;
+    public EnemyDamReceive EnemyDamReceive => enemyDamReceive;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadAnimator();
+        this.LoadRigidbody();
         this.LoadEnemyMovement();
         this.LoadEnemyFlipDirect();
         this.LoadEnemyFollow();
         this.LoadEnemyDetect();
+        this.LoadEnemyAttack();
+        this.LoadEnemyDamReceive();
     }
     protected void LoadAnimator()
     {
         if (this.anim != null) return;
         this.anim = GetComponentInChildren<Animator>();
         Debug.Log(transform.name + ":LoadAnimator", gameObject);
+    }
+    protected void LoadRigidbody()
+    {
+        if (this.rigid != null) return;
+        this.rigid = GetComponentInChildren<Rigidbody2D>();
+        Debug.Log(transform.name + ":LoadRigidbody", gameObject);
     }
     protected void LoadEnemyMovement()
     {
@@ -53,5 +68,17 @@ public class EnemyCtrl : DinoBehaviourScript
         if (this.enemyDetect != null) return;
         this.enemyDetect = GetComponentInChildren<EnemyDetectPlayer>();
         Debug.Log(transform.name + ":LoadEnemyDetect", gameObject);
+    }
+    protected void LoadEnemyAttack()
+    {
+        if (this.enemyAttack != null) return;
+        this.enemyAttack = GetComponentInChildren<EnemyAttack>();
+        Debug.Log(transform.name + ":LoadEnemyAttack", gameObject);
+    }
+    protected void LoadEnemyDamReceive()
+    {
+        if (this.enemyDamReceive != null) return;
+        this.enemyDamReceive = GetComponentInChildren<EnemyDamReceive>();
+        Debug.Log(transform.name + ":LoadEnemyDamReceive", gameObject);
     }
 }
