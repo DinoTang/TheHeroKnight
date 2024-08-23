@@ -8,8 +8,9 @@ public class ArrowSpawn : Spawner
     protected static ArrowSpawn instance;
     public static ArrowSpawn Instance => instance;
     protected static string arrowOne = "Arrow_1";
+    protected static string arrowTwo = "Arrow_2";
     public string ArrowOne => arrowOne;
-
+    public string ArrowTwo => arrowTwo;
     protected override void Awake()
     {
         base.Awake();

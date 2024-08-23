@@ -25,6 +25,7 @@ public class ArrowDamSender : DamageSender
     }
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.CompareTag("Enemy")) return;
         if (collider.transform.parent == this.arrowCtrl.Shooter) return;
         base.OnTriggerEnter2D(collider);
     }

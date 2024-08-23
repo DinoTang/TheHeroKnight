@@ -14,7 +14,7 @@ public abstract class EnemyAbstract : DinoBehaviourScript
         this.LoadEnemyCtrl();
     }
 
-    protected void LoadEnemyCtrl()
+    protected virtual void LoadEnemyCtrl()
     {
         if (this.enemyCtrl != null) return;
         this.enemyCtrl = transform.parent.GetComponent<EnemyCtrl>();

@@ -2,34 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : EnemyAbstract
+public abstract class EnemyAttack : EnemyAbstract
 {
     [Header("Enemy Attack")]
-    [SerializeField] protected Transform enemyDamSender;
     [SerializeField] protected bool isAttack;
-    [SerializeField] protected float distance;
-    [SerializeField] protected float disLimit = 2f;
+    [SerializeField] protected float distanceAttack;
+    [SerializeField] protected float disAttackLimit = 2f;
     [SerializeField] protected float attackTime = 0.5f;
     [SerializeField] protected float attackTimeCounter = 0f;
     [SerializeField] protected float attackCoolDown = 2f;
     [SerializeField] protected float attackCoolDownCounter = 0f;
     public bool IsAttack => isAttack;
-    protected override void LoadComponent()
-    {
-        base.LoadComponent();
-        this.LoadEnemyDamSender();
-    }
-    protected void LoadEnemyDamSender()
-    {
-        if (this.enemyDamSender != null) return;
-        this.enemyDamSender = transform.parent.Find("EnemyDamSender");
-        Debug.Log(transform.name + ": LoadEnemyDamSender", gameObject);
-    }
     protected void Update()
     {
         this.Attacking();
     }
-    protected void Attacking()
+    protected virtual void Attacking()
     {
         if (this.enemyCtrl.EnemyDamReceive.IsDead) return;
         if (!this.enemyCtrl.EnemyDetect.Detect)
@@ -48,23 +36,21 @@ public class EnemyAttack : EnemyAbstract
     }
     protected bool CanAttack()
     {
-        this.distance = Vector3.Distance(transform.parent.position, this.enemyCtrl.EnemyFollow.Target.position);
-        if (this.distance <= this.disLimit && this.attackCoolDownCounter <= 0f)
+        this.distanceAttack = Vector3.Distance(transform.parent.position, this.enemyCtrl.EnemyFollow.Target.position);
+        if (this.distanceAttack <= this.disAttackLimit && this.attackCoolDownCounter <= 0f)
             return true;
         return false;
     }
-    protected void Attack()
+    protected virtual void Attack()
     {
         this.isAttack = true;
-        this.enemyDamSender.gameObject.SetActive(true);
         this.SetAttackTime();
     }
-    protected void StopAttack()
+    protected virtual void StopAttack()
     {
         if (this.attackTimeCounter <= 0f && this.isAttack)
         {
             this.isAttack = false;
-            this.enemyDamSender.gameObject.SetActive(false);
         }
     }
     protected void TimeCooldown()

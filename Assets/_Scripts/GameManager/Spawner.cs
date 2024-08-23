@@ -85,7 +85,6 @@ public abstract class Spawner : DinoBehaviourScript
     {
         this.poolObj.Add(obj);
         obj.gameObject.SetActive(false);
-        this.spawnCount--;
     }
     public Transform GetRandomPrefab()
     {

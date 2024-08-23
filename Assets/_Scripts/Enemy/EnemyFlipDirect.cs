@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFlipDirect : EnemyAbstract
 {
     // [Header("Enemy Flip Direct")]
-    protected void Update()
+    protected virtual void Update()
     {
         this.Flipping();
     }
