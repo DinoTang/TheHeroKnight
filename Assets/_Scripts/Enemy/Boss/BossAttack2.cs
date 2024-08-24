@@ -41,7 +41,7 @@ public class BossAttack2 : DinoBehaviourScript
     protected void LoadSpriteRenderer()
     {
         if (this.sprite != null) return;
-        this.sprite = GetComponent<SpriteRenderer>();
+        this.sprite = GetComponentInChildren<SpriteRenderer>();
         Debug.Log(transform.name + ": LoadSpriteRenderer", gameObject);
     }
     protected void Update()
@@ -70,12 +70,12 @@ public class BossAttack2 : DinoBehaviourScript
         this.sprite.enabled = true;
 
         yield return new WaitForSeconds(5);
+        this.sprite.enabled = false;
         this.bossAttackCtrl.angry = false;
         this.attack2 = true;
         this.collide.enabled = true;
 
         yield return new WaitForSeconds(5);
-        this.sprite.enabled = false;
         this.attack2 = false;
         this.collide.enabled = false;
         this.bossAttackCtrl.attackCount = 0;
