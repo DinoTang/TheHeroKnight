@@ -10,10 +10,16 @@ public class PlayerMovement : PlayerAbstract
     [SerializeField] protected float horizontal;
     [SerializeField] protected float vertical;
     [SerializeField] protected bool switchWeapon;
+    [SerializeField] protected VectorValue startingPos;
     public Rigidbody2D _Rb => _rb;
     public float Horizontal => horizontal;
     public float Vertical => vertical;
     public bool SwitchWeapon => switchWeapon;
+    protected override void Start()
+    {
+        base.Start();
+        transform.parent.position = startingPos.intialValue;
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
