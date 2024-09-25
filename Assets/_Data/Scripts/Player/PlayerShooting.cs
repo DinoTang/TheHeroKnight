@@ -40,14 +40,15 @@ public class PlayerShooting : PlayerAbstract
     }
     protected void Shooted()
     {
+        if (ArrowPlayerSpawn.Instance.SpawnCount <= 0) return;
         Vector3 spawPos = transform.parent.position;
         Quaternion spawRot = transform.parent.rotation;
-        Transform new_Arrow = ArrowSpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
+        Transform new_Arrow = ArrowPlayerSpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
         this.SetRotationArrow(new_Arrow);
     }
     protected string GetArrowName()
     {
-        return ArrowSpawn.Instance.ArrowOne;
+        return ArrowPlayerSpawn.Instance.ArrowOne;
     }
     protected void SetRotationArrow(Transform new_Arrow)
     {

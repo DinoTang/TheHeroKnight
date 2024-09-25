@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerCtrl : DinoBehaviourScript
 {
     [Header("Player Ctrl")]
+    protected static PlayerCtrl instance;
+    public static PlayerCtrl Instance => instance;
     [SerializeField] protected Animator anim;
     [SerializeField] protected PlayerMovement playerMovement;
     [SerializeField] protected PlayerAttack playerAttack;
@@ -21,6 +23,12 @@ public class PlayerCtrl : DinoBehaviourScript
     public PlayerFlipDirect PlayerFlipDirect => playerFlipDirect;
     public PlayerDash PlayerDash => playerDash;
     public PlayerDamReceive PlayerDamReceive => playerDamReceive;
+    protected override void Awake()
+    {
+        base.Awake();
+        if(PlayerCtrl.instance != null) Debug.Log("Only 1 PlayerCtrl allow to exist");
+        PlayerCtrl.instance = this;
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();

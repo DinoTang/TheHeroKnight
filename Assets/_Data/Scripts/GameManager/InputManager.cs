@@ -9,11 +9,15 @@ public class InputManager : DinoBehaviourScript
     protected static InputManager instance;
     public static InputManager Instance => instance;
     [SerializeField] protected float inputHorizontal;
-    [SerializeField] protected float inputVertical;
-
     public float InputHorizontal => inputHorizontal;
+    [SerializeField] protected float inputVertical;
     public float InputVertical => inputVertical;
-
+    [SerializeField] protected bool inputSwitchWeapon;
+    public bool InputSwitchWeapon => inputSwitchWeapon;
+    [SerializeField] protected bool inputAttack;
+    public bool InputAttack => inputAttack;
+    [SerializeField] protected bool inputDash = true;
+    public bool InputDash => inputDash;
     protected override void Awake()
     {
         base.Awake();
@@ -26,20 +30,8 @@ public class InputManager : DinoBehaviourScript
         this.GetInputMovement();
         this.GetInputChangeWeapon();
         this.GetInputDash();
+        this.GetInputHealing();
     }
-
-    protected void GetInputMovement()
-    {
-        this.inputHorizontal = Input.GetAxisRaw("Horizontal");
-        this.inputVertical = Input.GetAxisRaw("Vertical");
-
-    }
-    [SerializeField] protected bool inputSwitchWeapon;
-    [SerializeField] protected bool inputAttack;
-    [SerializeField] protected bool inputDash = true;
-    public bool InputSwitchWeapon => inputSwitchWeapon;
-    public bool InputAttack => inputAttack;
-    public bool InputDash => inputDash;
     public void SetAttack(bool _bool)
     {
         this.inputAttack = _bool;
@@ -47,6 +39,11 @@ public class InputManager : DinoBehaviourScript
     public void SetDash(bool _bool)
     {
         this.inputDash = _bool;
+    }
+    protected void GetInputMovement()
+    {
+        this.inputHorizontal = Input.GetAxisRaw("Horizontal");
+        this.inputVertical = Input.GetAxisRaw("Vertical");
     }
     protected void GetInputChangeWeapon()
     {
@@ -68,5 +65,13 @@ public class InputManager : DinoBehaviourScript
     protected void GetInputDash()
     {
         if (Input.GetKeyDown(KeyCode.L)) this.inputDash = false;
+    }
+    public bool GetInputHealing()
+    {
+        if (Input.GetKeyDown(KeyCode.K)) return true;
+
+        if (Input.GetKeyUp(KeyCode.K)) return false;
+
+        return false;
     }
 }

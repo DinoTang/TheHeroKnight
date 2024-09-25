@@ -5,8 +5,10 @@ public class EnemyMovement : EnemyAbstract
     [SerializeField] protected Transform homePoint;
     [SerializeField] protected float speed = 2f;
     [SerializeField] protected float distance;
-    [SerializeField] protected int distanceMax = 4;
-    [SerializeField] protected int distanceMin = -4;
+    [SerializeField] protected int distanceMaxX = 4;
+    [SerializeField] protected int distanceMinX = -4;
+    [SerializeField] protected int distanceMaxY = 4;
+    [SerializeField] protected int distanceMinY = -4;
     [SerializeField] protected float moveTime = 2f;
     [SerializeField] protected float moveTimeCounter = 0f;
     [SerializeField] protected bool isMoving;
@@ -63,8 +65,8 @@ public class EnemyMovement : EnemyAbstract
     {
         Vector2 homePosition = (Vector2)homePoint.position;
         this.wayPoint = homePosition + new Vector2(
-            Random.Range(this.distanceMin, this.distanceMax),
-            Random.Range(this.distanceMin, this.distanceMax)
+            Random.Range(this.distanceMinX, this.distanceMaxX),
+            Random.Range(this.distanceMinY, this.distanceMaxY)
         );
     }
 }

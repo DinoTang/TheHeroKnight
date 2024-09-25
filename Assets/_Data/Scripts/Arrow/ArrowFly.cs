@@ -10,6 +10,7 @@ public class ArrowFly : MonoBehaviour
 
     protected void FixedUpdate()
     {
+        transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y, -1f);
         transform.parent.Translate(this.direct * this.speed * Time.fixedDeltaTime);
     }
 }

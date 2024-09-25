@@ -6,18 +6,23 @@ public class BossAttack1 : DinoBehaviourScript
 {
     [SerializeField] protected BossAttackCtrl bossAttackCtrl;
     [SerializeField] protected Transform player;
-    [SerializeField] protected PolygonCollider2D collide;
+    [SerializeField] protected PolygonCollider2D collide1;
+    [SerializeField] protected BoxCollider2D collide2;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected float disToPlayer;
     [SerializeField] protected bool attack1;
     public Transform Player => player;
     public bool Attack1 => attack1;
     public bool isWorking1 = false;
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadPlayer();
         this.LoadBossAttackCtrl();
-        this.LoadCollider();
+        this.LoadPolygonCollider();
+        this.LoadBoxCollider();
+        this.LoadSpriteRenderer();
     }
     protected void LoadPlayer()
     {
@@ -31,11 +36,23 @@ public class BossAttack1 : DinoBehaviourScript
         this.bossAttackCtrl = GetComponentInParent<BossAttackCtrl>();
         Debug.Log(transform.name + ": LoadBossAttackCtrl", gameObject);
     }
-    protected void LoadCollider()
+    protected void LoadPolygonCollider()
     {
-        if (this.collide != null) return;
-        this.collide = GetComponent<PolygonCollider2D>();
-        Debug.Log(transform.name + ": LoadCollider", gameObject);
+        if (this.collide1 != null) return;
+        this.collide1 = GetComponent<PolygonCollider2D>();
+        Debug.Log(transform.name + ": LoadPolygonCollider", gameObject);
+    }
+    protected void LoadBoxCollider()
+    {
+        if (this.collide2 != null) return;
+        this.collide2 = GameObject.Find("Blockplayer").transform.GetComponent<BoxCollider2D>();
+        Debug.Log(transform.name + ": LoadBoxCollider", gameObject);
+    }
+    protected void LoadSpriteRenderer()
+    {
+        if (this.spriteRenderer != null) return;
+        this.spriteRenderer = GameObject.Find("Blockplayer").transform.GetComponent<SpriteRenderer>();
+        Debug.Log(transform.name + ": LoadSpriteRenderer", gameObject);
     }
     protected void Update()
     {
@@ -48,6 +65,8 @@ public class BossAttack1 : DinoBehaviourScript
     }
     protected IEnumerator DoWork1()
     {
+        this.spriteRenderer.enabled = true;
+        this.collide2.enabled = true;
         this.isWorking1 = true;
         this.bossAttackCtrl.angry = true;
 
@@ -57,7 +76,7 @@ public class BossAttack1 : DinoBehaviourScript
         this.bossAttackCtrl.angry = false;
         this.bossAttackCtrl.isMoving = true;
 
-        while (disToPlayer > 2)
+        while (disToPlayer >= 1)
         {
             this.disToPlayer = this.bossAttackCtrl.DistanceToTarget(this.player.position);
             this.bossAttackCtrl.BossCtrl.BossFlipDirect.Flipping(this.player);
@@ -68,11 +87,11 @@ public class BossAttack1 : DinoBehaviourScript
 
         yield return new WaitForSeconds(0.2f);
         this.attack1 = true;
-        this.collide.enabled = true;
+        this.collide1.enabled = true;
 
         yield return new WaitForSeconds(0.2f);
         this.attack1 = false;
-        this.collide.enabled = false;
+        this.collide1.enabled = false;
 
         yield return new WaitForSeconds(1);
         this.isWorking1 = false;

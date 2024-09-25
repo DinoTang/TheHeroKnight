@@ -26,13 +26,13 @@ public class SkeletonAttack : EnemyAttack
     {
         Vector3 spawPos = transform.parent.position;
         Quaternion spawRot = transform.parent.rotation;
-        Transform new_Arrow = ArrowSpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
+        Transform new_Arrow = ArrowEnemySpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
         this.SetRotationArrow(new_Arrow);
         base.Attack();
     }
     protected string GetArrowName()
     {
-        return ArrowSpawn.Instance.ArrowTwo;
+        return ArrowEnemySpawn.Instance.ArrowTwo;
     }
     protected void SetRotationArrow(Transform new_Arrow)
     {

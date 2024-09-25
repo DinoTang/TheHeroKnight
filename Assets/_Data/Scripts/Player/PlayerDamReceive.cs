@@ -9,11 +9,22 @@ public class PlayerDamReceive : DamageReceiver
     [SerializeField] protected float playerHurtTime = 0.5f;
     [SerializeField] protected CapsuleCollider2D collide;
     [SerializeField] protected PlayerCtrl playerCtrl;
+    [SerializeField] protected PlayerHpSO playerHpSO;
+    protected override void Start()
+    {
+        base.Start();
+        this.hp = this.playerHpSO.currentHp;
+    }
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadCollider();
         this.LoadPlayerCtrl();
+    }
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.Reborn();
     }
     protected void LoadCollider()
     {
@@ -27,11 +38,6 @@ public class PlayerDamReceive : DamageReceiver
         this.playerCtrl = GetComponentInParent<PlayerCtrl>();
         Debug.Log(transform.name + ": LoadPlayerCtrl", gameObject);
     }
-    protected override void ResetValue()
-    {
-        base.ResetValue();
-        this.Reborn();
-    }
     protected override void Reborn()
     {
         this.hpMax = this.playerHpMax;
@@ -39,6 +45,10 @@ public class PlayerDamReceive : DamageReceiver
         base.Reborn();
     }
     protected override void OnDead()
+    {
+        this.StopMovement();
+    }
+    protected void StopMovement()
     {
         this.collide.enabled = false;
         Vector3 posDead = transform.parent.position;

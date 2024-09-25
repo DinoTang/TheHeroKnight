@@ -8,15 +8,10 @@ public class EnemySpawnRandom : DinoBehaviourScript
     [SerializeField] protected EnemySpawnCtrl enemySpawnCtrl;
     [SerializeField] protected float delaySpawnTime = 3f;
     [SerializeField] protected float spawnTimer = 0f;
-    [SerializeField] protected int spawnMax = 10;
-    [SerializeField] protected float distance;
-    [SerializeField] protected float distanceMax = 10f;
-    [SerializeField] protected Transform target;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadEnemySpawnCtrl();
-        this.LoadTarget();
     }
     protected void LoadEnemySpawnCtrl()
     {
@@ -24,19 +19,12 @@ public class EnemySpawnRandom : DinoBehaviourScript
         this.enemySpawnCtrl = GetComponent<EnemySpawnCtrl>();
         Debug.Log(transform.name + ": LoadEnemySpawnCtrl", gameObject);
     }
-    protected void LoadTarget()
-    {
-        if (this.target != null) return;
-        this.target = GameObject.Find("Player").transform;
-        Debug.Log(transform.name + ": LoadTarget", gameObject);
-    }
     protected void Update()
     {
         this.EnemySpawning();
     }
     protected void EnemySpawning()
     {
-        if (!this.CanSpawn()) return;
         if (!this.RandomSpawnLimit()) return;
 
         this.spawnTimer += Time.deltaTime;
@@ -50,15 +38,10 @@ public class EnemySpawnRandom : DinoBehaviourScript
         Transform newEnemy = this.enemySpawnCtrl.EnemySpawn.Spawn(enemy, spawnPointPos, spawPointRot);
         newEnemy.gameObject.SetActive(true);
     }
-    protected bool CanSpawn()
-    {
-        this.distance = Vector2.Distance(transform.position, target.position);
-        if (this.distance > this.distanceMax) return false;
-        return true;
-    }
+
     protected bool RandomSpawnLimit()
     {
-        if (this.enemySpawnCtrl.EnemySpawn.SpawnCount >= this.spawnMax) return false;
+        if (this.enemySpawnCtrl.EnemySpawn.SpawnCount <= 0) return false;
         return true;
     }
 }

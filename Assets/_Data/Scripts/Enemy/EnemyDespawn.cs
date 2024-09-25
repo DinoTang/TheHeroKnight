@@ -18,6 +18,11 @@ public class EnemyDespawn : DespawnByTime
     }
     public override void DespawnObj()
     {
+        if (EnemySpawn.Instance == null)
+        {
+            base.DespawnObj();
+            return;
+        }
         EnemySpawn.Instance.Despawn(transform.parent);
     }
     protected override bool CanDespawn()

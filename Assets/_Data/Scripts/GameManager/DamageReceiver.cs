@@ -34,7 +34,7 @@ public class DamageReceiver : DinoBehaviourScript
         this.hp = hpMax;
         this.isDead = false;
     }
-    protected virtual void Add(int hp)
+    public virtual void Add(int hp)
     {
         if (this.isDead) return;
         this.hp += hp;
@@ -47,16 +47,16 @@ public class DamageReceiver : DinoBehaviourScript
         this.hp -= damage;
         this.isHurt = true;
         if (this.hp <= 0) this.hp = 0;
-        this.IsDeaded();
+        this.CheckIsDead();
 
     }
-    protected bool CheckDead()
+    public bool IsDeaded()
     {
         return this.hp <= 0;
     }
-    protected void IsDeaded()
+    protected void CheckIsDead()
     {
-        if (!this.CheckDead()) return;
+        if (!this.IsDeaded()) return;
         this.isDead = true;
         this.OnDead();
     }

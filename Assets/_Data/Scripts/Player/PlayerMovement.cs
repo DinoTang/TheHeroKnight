@@ -10,7 +10,7 @@ public class PlayerMovement : PlayerAbstract
     [SerializeField] protected float horizontal;
     [SerializeField] protected float vertical;
     [SerializeField] protected bool switchWeapon;
-    [SerializeField] protected VectorValue startingPos;
+    [SerializeField] protected SceneSO currentPlayer;
     public Rigidbody2D _Rb => _rb;
     public float Horizontal => horizontal;
     public float Vertical => vertical;
@@ -18,7 +18,7 @@ public class PlayerMovement : PlayerAbstract
     protected override void Start()
     {
         base.Start();
-        transform.parent.position = startingPos.intialValue;
+        transform.parent.position = currentPlayer.intialValue;
     }
     protected override void LoadComponent()
     {
@@ -36,6 +36,14 @@ public class PlayerMovement : PlayerAbstract
         if (this._rb != null) return;
         this._rb = GetComponentInParent<Rigidbody2D>();
         Debug.Log(transform.name + ": LoadRigidbody", gameObject);
+    }
+    public void SetHorizontal(float horizontal)
+    {
+        this.horizontal = horizontal;
+    }
+    public void SetVertical(float vertical)
+    {
+        this.vertical = vertical;
     }
     protected void GetInput()
     {

@@ -5,13 +5,31 @@ using UnityEngine;
 public class Inventory : DinoBehaviourScript
 {
     [SerializeField] protected int maxSlot = 10;
+    [SerializeField] protected InventorySO inventorySO;
     [SerializeField] protected List<ItemInventory> items;
+    public List<ItemInventory> Items => items;
     protected override void Start()
     {
-        this.PickupItem(ItemCode.Heath, 40);
-        this.PickupItem(ItemCode.Arrow, 21);
+        this.LoadSavedItems();
     }
-
+    protected void LoadSavedItems()
+    {
+        foreach (ItemInventory item in this.inventorySO.currentItems)
+        {
+            this.items.Add(item);
+        }
+    }
+    public void SaveItems()
+    {
+        foreach (ItemInventory item in this.items)
+        {
+            this.inventorySO.currentItems.Add(item);
+        }
+    }
+    public void ClearInventory()
+    {
+        this.inventorySO.currentItems.Clear();
+    }
     public bool PickupItem(ItemCode itemCode, int addCount)
     {
         ItemProfileSO itemProfile = this.GetItemProfile(itemCode);
@@ -79,9 +97,12 @@ public class Inventory : DinoBehaviourScript
         };
         return itemInventory;
     }
-
     protected bool IsMaxSlot()
     {
         return this.items.Count >= maxSlot;
+    }
+    public void ClearEmptyItem()
+    {
+        this.items.RemoveAll(item => item.itemCount <= 0);
     }
 }

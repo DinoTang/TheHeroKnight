@@ -12,6 +12,6 @@ public class BossFlipDirect : EnemyFlipDirect
     public void Flipping(Transform target)
     {
         this.direct = target.position.x - transform.position.x;
-        this.Flip(direct);
+        this.Flip(this.direct);
     }
 }

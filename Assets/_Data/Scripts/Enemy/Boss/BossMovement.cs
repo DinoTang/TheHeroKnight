@@ -21,17 +21,17 @@ public class BossMovement : DinoBehaviourScript
     }
     protected void Update()
     {
-        this.Attack();
+        this.Move();
     }
-    protected bool CanAttack()
+    public bool CanMove()
     {
         this.distance = Vector2.Distance(transform.parent.position, target.position);
         if (this.distance <= this.distanceToTarget) return true;
         return false;
     }
-    protected void Attack()
+    protected void Move()
     {
-        if (!this.CanAttack()) return;
+        if (!this.CanMove()) return;
         this.bossAttack1.enabled = true;
     }
 }

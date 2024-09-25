@@ -113,10 +113,10 @@ TextureImporter:
       name: Health potion_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 7
-        width: 20
-        height: 25
+        x: 101
+        y: 48
+        width: 180
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

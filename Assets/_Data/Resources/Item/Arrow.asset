@@ -15,4 +15,4 @@ MonoBehaviour:
   itemCode: 2
   itemType: 2
   itemName: Arrow
-  defaultMaxStack: 10
+  defaultMaxStack: 5
