@@ -35,6 +35,7 @@ public class ItemLooter : DinoBehaviourScript
         if (this.inventory.PickupItem(itemCode, 1))
         {
             itemPickupable.Picked();
+            AudioManager.Instance.PlaySFX("Pickup");
         }
     }
 }

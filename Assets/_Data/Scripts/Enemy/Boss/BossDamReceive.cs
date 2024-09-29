@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class BossDamReceive : EnemyDamReceive
 {
-    protected override void SetRigidConstraint()
+    protected override void SetPosDead()
     {
 
+    }
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        AudioManager.Instance.StopMusic();
     }
 }

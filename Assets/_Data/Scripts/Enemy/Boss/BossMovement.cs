@@ -5,19 +5,26 @@ using UnityEngine;
 public class BossMovement : DinoBehaviourScript
 {
     [SerializeField] protected Transform target;
-    [SerializeField] protected BossAttack1 bossAttack1;
+    [SerializeField] protected BossAttack bossAttack;
     [SerializeField] protected float distance;
     [SerializeField] protected float distanceToTarget;
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadTarget();
+        this.LoadBossAttack();
     }
     protected void LoadTarget()
     {
         if (this.target != null) return;
         this.target = GameObject.Find("Player").transform;
         Debug.Log(transform.name + ": LoadTarget", gameObject);
+    }
+    protected void LoadBossAttack()
+    {
+        if (this.bossAttack != null) return;
+        this.bossAttack = transform.parent.GetComponentInChildren<BossAttack>();
+        Debug.Log(transform.name + ": LoadBossAttack", gameObject);
     }
     protected void Update()
     {
@@ -32,6 +39,6 @@ public class BossMovement : DinoBehaviourScript
     protected void Move()
     {
         if (!this.CanMove()) return;
-        this.bossAttack1.enabled = true;
+        this.bossAttack.enabled = true;
     }
 }

@@ -23,6 +23,6 @@ public class ArrowCountText : BaseText
     }
     protected void ShowingArrowCount()
     {
-        this.text.SetText(arrowSO.arrowCounts.ToString());
+        this.text.SetText(ArrowPlayerSpawn.Instance.SpawnCount.ToString());
     }
 }

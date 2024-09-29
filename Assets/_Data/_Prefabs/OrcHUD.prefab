@@ -798,7 +798,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5691552622849174638
 MonoBehaviour:
@@ -1298,4 +1298,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  enemyCtrl: {fileID: 0}
   collide: {fileID: 8569538480749653999}

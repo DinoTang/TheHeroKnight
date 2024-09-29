@@ -6,7 +6,6 @@ public abstract class Despawn : DinoBehaviourScript
 {
     protected void FixedUpdate()
     {
-        this.CanDespawn();
         this.Despawning();
     }
     protected virtual void Despawning()

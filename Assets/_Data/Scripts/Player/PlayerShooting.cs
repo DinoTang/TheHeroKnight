@@ -19,6 +19,7 @@ public class PlayerShooting : PlayerAbstract
 
     protected void GetInputShoot()
     {
+        if (ArrowPlayerSpawn.Instance.SpawnCount <= 0) return;
         if (this.playerCtrl.PlayerDamReceive.IsDead) return;
         if (this.playerCtrl.PlayerDamReceive.IsHurt) return;
         if (!this.playerCtrl.PlayerMovement.SwitchWeapon) return;
@@ -40,10 +41,12 @@ public class PlayerShooting : PlayerAbstract
     }
     protected void Shooted()
     {
-        if (ArrowPlayerSpawn.Instance.SpawnCount <= 0) return;
         Vector3 spawPos = transform.parent.position;
         Quaternion spawRot = transform.parent.rotation;
         Transform new_Arrow = ArrowPlayerSpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
+
+        AudioManager.Instance.PlaySFX("Arrow");
+
         this.SetRotationArrow(new_Arrow);
     }
     protected string GetArrowName()

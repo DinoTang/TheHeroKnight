@@ -27,9 +27,9 @@ public class PlayerAttack : PlayerAbstract
     protected void Attacking()
     {
         if (!this.attack) return;
-
         this.attackTimeCounter += Time.deltaTime;
         if (this.attackTimeCounter < this.attackTime) return;
+        AudioManager.Instance.PlaySFX("Sword");
         this.attackTimeCounter = 0f;
 
         this.attack = false;

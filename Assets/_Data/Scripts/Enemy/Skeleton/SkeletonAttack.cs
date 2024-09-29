@@ -27,6 +27,9 @@ public class SkeletonAttack : EnemyAttack
         Vector3 spawPos = transform.parent.position;
         Quaternion spawRot = transform.parent.rotation;
         Transform new_Arrow = ArrowEnemySpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
+
+        AudioManager.Instance.PlaySFX("Arrow");
+
         this.SetRotationArrow(new_Arrow);
         base.Attack();
     }

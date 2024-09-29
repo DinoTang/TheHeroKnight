@@ -54,10 +54,8 @@ public class BossAttack1 : DinoBehaviourScript
         this.spriteRenderer = GameObject.Find("Blockplayer").transform.GetComponent<SpriteRenderer>();
         Debug.Log(transform.name + ": LoadSpriteRenderer", gameObject);
     }
-    protected void Update()
+    public void Attacking1()
     {
-        if (this.bossAttackCtrl.BossCtrl.BossDamReceive.IsDead) return;
-        if (this.bossAttackCtrl.BossCtrl.BossDamReceive.Hp <= 30) return;
         if (!isWorking1)
         {
             StartCoroutine(DoWork1());
@@ -69,7 +67,7 @@ public class BossAttack1 : DinoBehaviourScript
         this.collide2.enabled = true;
         this.isWorking1 = true;
         this.bossAttackCtrl.angry = true;
-
+        AudioManager.Instance.PlaySFX("MonsterBreath");
 
         yield return new WaitForSeconds(5);
         this.disToPlayer = this.bossAttackCtrl.DistanceToTarget(this.player.position);
@@ -87,6 +85,7 @@ public class BossAttack1 : DinoBehaviourScript
 
         yield return new WaitForSeconds(0.2f);
         this.attack1 = true;
+        AudioManager.Instance.PlaySFX("EnemyAttack");
         this.collide1.enabled = true;
 
         yield return new WaitForSeconds(0.2f);

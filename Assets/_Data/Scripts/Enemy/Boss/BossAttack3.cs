@@ -42,9 +42,8 @@ public class BossAttack3 : DinoBehaviourScript
         Debug.Log(transform.name + ": LoadLineRenderer", gameObject);
     }
 
-    protected void Update()
+    public void Attacking3()
     {
-        if (this.bossAttackCtrl.BossCtrl.BossDamReceive.IsDead) return;
         if (this.bossAttackCtrl.BossAttack1.isWorking1 || this.bossAttackCtrl.BossAttack2.isWorking2) return;
         if (!isWorking3 && this.bossAttackCtrl.BossCtrl.BossDamReceive.Hp <= 30)
         {
@@ -56,8 +55,8 @@ public class BossAttack3 : DinoBehaviourScript
     {
         this.isWorking3 = true;
         this.bossAttackCtrl.angry = true;
-
-
+        AudioManager.Instance.PlaySFX("MonsterBreath");
+        
         this.lineRenderer.enabled = true;
         float timer = 0f;
 
@@ -77,7 +76,7 @@ public class BossAttack3 : DinoBehaviourScript
         yield return new WaitForSeconds(0.5f);
         this.lineRenderer.enabled = false;
 
-        // Thực hiện tấn công
+        //Tan cong
         this.bossAttackCtrl.angry = false;
         this.attack3 = true;
 

@@ -30,6 +30,7 @@ public class OrcAttack : EnemyAttack
     protected override void Attack()
     {
         this.enemyDamSender.gameObject.SetActive(true);
+        AudioManager.Instance.PlaySFX("OrcAttack");
         base.Attack();
     }
     protected override void StopAttack()

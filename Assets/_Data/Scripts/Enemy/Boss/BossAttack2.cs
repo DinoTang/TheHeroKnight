@@ -44,13 +44,19 @@ public class BossAttack2 : DinoBehaviourScript
         this.sprite = GetComponentInChildren<SpriteRenderer>();
         Debug.Log(transform.name + ": LoadSpriteRenderer", gameObject);
     }
-    protected void Update()
+    public void Attacking2()
     {
-        if (this.bossAttackCtrl.BossCtrl.BossDamReceive.IsDead) return;
-        if (this.bossAttackCtrl.BossCtrl.BossDamReceive.Hp <= 30) return;
         if (!isWorking2)
         {
             StartCoroutine(DoWork2());
+        }
+    }
+    protected IEnumerator PlayAttack2Sound()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            AudioManager.Instance.PlaySFX("Attack2");
+            yield return new WaitForSeconds(1);
         }
     }
     protected IEnumerator DoWork2()
@@ -68,14 +74,16 @@ public class BossAttack2 : DinoBehaviourScript
         this.bossAttackCtrl.isMoving = false;
         this.bossAttackCtrl.angry = true;
         this.sprite.enabled = true;
+        AudioManager.Instance.PlaySFX("MonsterBreath");
 
         yield return new WaitForSeconds(5);
+
         this.sprite.enabled = false;
         this.bossAttackCtrl.angry = false;
         this.attack2 = true;
         this.collide.enabled = true;
+        yield return StartCoroutine(PlayAttack2Sound());
 
-        yield return new WaitForSeconds(5);
         this.attack2 = false;
         this.collide.enabled = false;
         this.bossAttackCtrl.attackCount = 0;

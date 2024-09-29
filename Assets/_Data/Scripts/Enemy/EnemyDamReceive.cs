@@ -36,7 +36,7 @@ public class EnemyDamReceive : DamageReceiver
         this.hurtTime = this.enemyHurtTime;
         this.hpMax = this.enemyCtrl.EnemySO.hpMax;
         this.collide.enabled = true;
-        this.SetRigidConstraint();
+        this.SetPosDead();
         base.Reborn();
     }
     protected override void OnDead()
@@ -54,13 +54,13 @@ public class EnemyDamReceive : DamageReceiver
     protected override void StopHurt()
     {
         base.StopHurt();
-        this.SetRigidConstraint();
+        this.SetPosDead();
     }
     protected override void Hurt()
     {
         this.enemyCtrl.Rigid.constraints = RigidbodyConstraints2D.FreezeAll;
     }
-    protected virtual void SetRigidConstraint()
+    protected virtual void SetPosDead()
     {
         this.enemyCtrl.Rigid.constraints = RigidbodyConstraints2D.None;
         this.enemyCtrl.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation;

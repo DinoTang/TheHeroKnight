@@ -20,6 +20,7 @@ public class DamageSender : DinoBehaviourScript
     protected void SendToDamReceive(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
+        AudioManager.Instance.PlaySFX("SwordBlood", 0.5f);
     }
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {

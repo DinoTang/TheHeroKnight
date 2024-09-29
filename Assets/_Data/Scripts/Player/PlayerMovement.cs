@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
 using UnityEngine;
 public class PlayerMovement : PlayerAbstract
 {
@@ -10,7 +7,7 @@ public class PlayerMovement : PlayerAbstract
     [SerializeField] protected float horizontal;
     [SerializeField] protected float vertical;
     [SerializeField] protected bool switchWeapon;
-    [SerializeField] protected SceneSO currentPlayer;
+    [SerializeField] protected PlayerPos currentPlayer;
     public Rigidbody2D _Rb => _rb;
     public float Horizontal => horizontal;
     public float Vertical => vertical;
@@ -45,16 +42,27 @@ public class PlayerMovement : PlayerAbstract
     {
         this.vertical = vertical;
     }
+    protected void PlayFootStepSound()
+    {
+        AudioManager.Instance.FootStepSource.enabled = true;
+    }
+    protected void StopFootStepSound()
+    {
+        AudioManager.Instance.FootStepSource.enabled = false;
+    }
     protected void GetInput()
     {
         this.horizontal = InputManager.Instance.InputHorizontal;
         this.vertical = InputManager.Instance.InputVertical;
+        if (this.horizontal != 0 || this.vertical != 0) this.PlayFootStepSound();
+        else this.StopFootStepSound();
     }
     protected void Moving()
     {
         if (this.playerCtrl.PlayerDamReceive.IsDead) return;
         if (this.playerCtrl.PlayerDash.IsDashing) return;
         this._rb.velocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
+
     }
     protected void ChangeWeapon()
     {

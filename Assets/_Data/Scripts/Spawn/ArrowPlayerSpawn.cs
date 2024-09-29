@@ -13,7 +13,7 @@ public class ArrowPlayerSpawn : Spawner
     protected override void Awake()
     {
         base.Awake();
-        if (ArrowPlayerSpawn.instance != null) Debug.LogWarning("Only 1 ArrowPlayerSpawn exist allow");
+        if (ArrowPlayerSpawn.instance != null) Debug.LogWarning("Only 1 ArrowPlayerSpawn allow to exist");
         ArrowPlayerSpawn.instance = this;
     }
     protected override void LoadComponent()
@@ -21,10 +21,6 @@ public class ArrowPlayerSpawn : Spawner
         base.LoadComponent();
         this.LoadArrowSO();
         this.spawnCount = this.arrowSO.arrowCounts;
-    }
-    protected void Update()
-    {
-        this.arrowSO.arrowCounts = this.spawnCount;
     }
     protected void LoadArrowSO()
     {

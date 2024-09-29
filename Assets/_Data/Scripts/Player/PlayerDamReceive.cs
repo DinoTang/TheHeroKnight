@@ -47,6 +47,7 @@ public class PlayerDamReceive : DamageReceiver
     protected override void OnDead()
     {
         this.StopMovement();
+        RestartToggle.Instance.RestartGameMenu();
     }
     protected void StopMovement()
     {

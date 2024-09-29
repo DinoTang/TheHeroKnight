@@ -6,25 +6,59 @@ public class SceneTransition : DinoBehaviourScript
 {
     [SerializeField] protected SceneName sceneName;
     [SerializeField] protected Vector2 playerPos;
-    [SerializeField] protected SceneSO playerStorage;
+    [SerializeField] protected PlayerPos playerStorage;
     [SerializeField] protected PlayerHpSO playerHpSO;
+    [SerializeField] protected ArrowSO arrowSO;
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected Animator transAnim;
-    protected override void ResetValue()
+    protected override void LoadComponent()
     {
-        base.ResetValue();
-        this.playerPos.x = -16;
-        this.playerPos.y = 3;
+        base.LoadComponent();
+        this.LoadPlayerPos();
+        this.LoadPlayerHpSO();
+        this.LoadArrowSO();
+        this.LoadInventory();
+        this.LoadAnimator();
+    }
+    protected void LoadPlayerPos()
+    {
+        if (this.playerStorage != null) return;
+        this.playerStorage = Resources.Load<PlayerPos>("GameData/PlayerPos");
+        Debug.Log(transform.name + ": LoadPlayerPos", gameObject);
+    }
+    protected void LoadPlayerHpSO()
+    {
+        if (this.playerHpSO != null) return;
+        this.playerHpSO = Resources.Load<PlayerHpSO>("GameData/PlayerHpSO");
+        Debug.Log(transform.name + ": LoadPlayerHpSO", gameObject);
+    }
+    protected void LoadArrowSO()
+    {
+        if (this.arrowSO != null) return;
+        this.arrowSO = Resources.Load<ArrowSO>("GameData/ArrowSO");
+        Debug.Log(transform.name + ": LoadArrowSO", gameObject);
+    }
+    protected void LoadInventory()
+    {
+        if (this.inventory != null) return;
+        this.inventory = GameObject.Find("Player").GetComponentInChildren<Inventory>();
+        Debug.Log(transform.name + ": LoadInventory", gameObject);
+    }
+    protected void LoadAnimator()
+    {
+        if (this.transAnim != null) return;
+        this.transAnim = GetComponentInChildren<Animator>();
+        Debug.Log(transform.name + ": LoadAnimator", gameObject);
     }
     protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            this.SetHp();
-            this.SetPos();
-            this.SetInventory();
-            this.NextLevel();
-        }
+        if (!other.gameObject.CompareTag("Player")) return;
+        this.SetHp();
+        this.SetPos();
+        this.SetInventory();
+        this.SetArrowCount();
+        this.NextLevel();
+        AudioManager.Instance.FootStepSource.enabled = false;
     }
     protected void SetHp()
     {
@@ -38,6 +72,10 @@ public class SceneTransition : DinoBehaviourScript
     {
         this.inventory.ClearInventory();
         this.inventory.SaveItems();
+    }
+    protected void SetArrowCount()
+    {
+        this.arrowSO.arrowCounts = ArrowPlayerSpawn.Instance.SpawnCount;
     }
     protected void NextLevel()
     {

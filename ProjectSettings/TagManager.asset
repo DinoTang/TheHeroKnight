@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PlayerAttackArea
   - Wall
+  - Princess
   layers:
   - Default
   - TransparentFX
