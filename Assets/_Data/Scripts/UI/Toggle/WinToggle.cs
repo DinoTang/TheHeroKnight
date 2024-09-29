@@ -49,7 +49,7 @@ public class WinToggle : BaseToggle
     IEnumerator Wait2DisplayMenu()
     {
         yield return new WaitForSeconds(2);
-        AudioManager.Instance.PlayMusic("Victory");
+        AudioManager.Instance.OpenMusic();
         this.sceneTrans.gameObject.SetActive(false);
         this.playerMenu.gameObject.SetActive(false);
         this.winMenu.gameObject.SetActive(true);

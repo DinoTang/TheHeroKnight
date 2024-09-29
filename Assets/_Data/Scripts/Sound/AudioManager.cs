@@ -12,13 +12,25 @@ public class AudioManager : DinoBehaviourScript
     [SerializeField] protected AudioSource musicSource, sfxSource, footStepSource;
     public AudioSource FootStepSource => footStepSource;
     public AudioSource SfxSource => sfxSource;
+    protected override void Start()
+    {
+        base.Start();
+        this.ClockMusic();
+    }
     protected override void Awake()
     {
         base.Awake();
         if (AudioManager.instance != null) Debug.LogWarning("Only 1 AudioManager allow to exist");
         AudioManager.instance = this;
     }
-
+    public void ClockMusic()
+    {
+        this.musicSource.gameObject.SetActive(false);
+    }
+    public void OpenMusic()
+    {
+        this.musicSource.gameObject.SetActive(true);
+    }
     public void PlayMusic(string name)
     {
         Sound s = Array.Find(musicSound, sound => sound.soundName.ToString() == name);

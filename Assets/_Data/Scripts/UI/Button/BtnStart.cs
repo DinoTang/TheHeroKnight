@@ -11,7 +11,7 @@ public class BtnStart : BaseButton
     {
         base.Start();
         StartCoroutine(this.StartMenuGame());
-        AudioManager.Instance.PlayMusic("Background");
+        AudioManager.Instance.OpenMusic();
     }
     protected override void LoadComponent()
     {

@@ -8,7 +8,7 @@ public class BossAttack : DinoBehaviourScript
     protected override void Start()
     {
         base.Start();
-        AudioManager.Instance.PlayMusic("Combat", 0.5f);
+        AudioManager.Instance.OpenMusic();
     }
     protected override void LoadComponent()
     {
