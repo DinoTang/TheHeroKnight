@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class AudioManager : DinoBehaviourScript
+public class AudioManager : BaseBehavior
 {
     protected static AudioManager instance;
     public static AudioManager Instance => instance;

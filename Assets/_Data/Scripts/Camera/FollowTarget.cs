@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowTarget : DinoBehaviourScript
+public class FollowTarget : BaseBehavior
 {
     [SerializeField] protected float speed = 100;
     [SerializeField] protected Transform target;

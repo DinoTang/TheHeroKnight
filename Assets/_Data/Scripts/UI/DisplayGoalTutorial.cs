@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayGoalTutorial : DinoBehaviourScript
+public class DisplayGoalTutorial : BaseBehavior
 {
     protected void OnTriggerEnter2D(Collider2D other)
     {

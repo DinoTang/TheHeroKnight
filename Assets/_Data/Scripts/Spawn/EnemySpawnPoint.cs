@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnPoint : DinoBehaviourScript
+public class EnemySpawnPoint : BaseBehavior
 {
     [Header("Enemy Spawn Point")]
     [SerializeField] protected List<Transform> points;

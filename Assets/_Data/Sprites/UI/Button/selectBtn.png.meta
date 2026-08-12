@@ -1,0 +1,246 @@
+fileFormatVersion: 2
+guid: eac980d4bc184104d92763a15ee7e1ba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5466432261147650771
+    second: selectBtn_0
+  - first:
+      213: 8841490130771066071
+    second: selectBtn_1
+  - first:
+      213: 1225750440907520672
+    second: selectBtn_2
+  - first:
+      213: 316005330157739926
+    second: selectBtn_3
+  - first:
+      213: -6785054143750918874
+    second: selectBtn_4
+  - first:
+      213: -5378235937508537232
+    second: selectBtn_5
+  - first:
+      213: 6330178257179622959
+    second: selectBtn_6
+  - first:
+      213: -4068392926724256702
+    second: selectBtn_7
+  - first:
+      213: 4792362081839170799
+    second: selectBtn_8
+  - first:
+      213: -1481202296241991324
+    second: selectBtn_9
+  - first:
+      213: -345078791943717613
+    second: selectBtn_10
+  - first:
+      213: -7626195017824452802
+    second: selectBtn_11
+  - first:
+      213: -8221216714552312034
+    second: selectBtn_12
+  - first:
+      213: 191478344964152008
+    second: selectBtn_13
+  - first:
+      213: 4585490264677436823
+    second: selectBtn_14
+  - first:
+      213: -1362207585022340735
+    second: selectBtn_15
+  - first:
+      213: -329715475044356857
+    second: selectBtn_16
+  - first:
+      213: 2374068259606130035
+    second: selectBtn_17
+  - first:
+      213: -7176251668682668786
+    second: selectBtn_18
+  - first:
+      213: -4778353958040137491
+    second: selectBtn_19
+  - first:
+      213: 3394417768038064786
+    second: selectBtn_20
+  - first:
+      213: 8984857214443305804
+    second: selectBtn_21
+  - first:
+      213: 3447519940657715575
+    second: selectBtn_22
+  - first:
+      213: -3360094781508182255
+    second: selectBtn_23
+  - first:
+      213: 4724000938262148163
+    second: selectBtn_24
+  - first:
+      213: 7227300616668882185
+    second: selectBtn_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: selectBtn_0
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 347
+        width: 1391
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dae07add2bacdb40800000000000000
+      internalID: 5466432261147650771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f55d22b06e8ed1045a257e5350e8abaa
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1536.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      selectBtn_0: 5466432261147650771
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

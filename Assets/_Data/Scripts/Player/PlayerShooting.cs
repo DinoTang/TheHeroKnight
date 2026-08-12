@@ -45,6 +45,15 @@ public class PlayerShooting : PlayerAbstract
         Quaternion spawRot = transform.parent.rotation;
         Transform new_Arrow = ArrowPlayerSpawn.Instance.Spawn(this.GetArrowName(), spawPos, spawRot);
 
+        if (new_Arrow != null)
+        {
+            ArrowCtrl arrowCtrl = new_Arrow.GetComponent<ArrowCtrl>();
+            if (arrowCtrl != null)
+            {
+                arrowCtrl.SetShooter(this.playerCtrl.transform);
+            }
+        }
+
         AudioManager.Instance.PlaySFX("Arrow");
 
         this.SetRotationArrow(new_Arrow);

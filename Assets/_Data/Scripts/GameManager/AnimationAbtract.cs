@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AnimationAbtract : DinoBehaviourScript
+public abstract class AnimationAbtract : BaseBehavior
 {
     protected virtual void Update()
     {

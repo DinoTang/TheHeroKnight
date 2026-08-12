@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageSender : DinoBehaviourScript
+public class DamageSender : BaseBehavior
 {
     [Header("Damage Sender")]
     [SerializeField] protected int damage = 1;
@@ -20,6 +20,12 @@ public class DamageSender : DinoBehaviourScript
     protected void SendToDamReceive(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
+
+        if (this is PlayerDamSender && PlayerCtrl.Instance != null && PlayerCtrl.Instance.PlayerAttack != null)
+        {
+            PlayerCtrl.Instance.PlayerAttack.RegisterHit();
+        }
+
         AudioManager.Instance.PlaySFX("SwordBlood", 0.5f);
     }
     protected virtual void OnTriggerEnter2D(Collider2D other)

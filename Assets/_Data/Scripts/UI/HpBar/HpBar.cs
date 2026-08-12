@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HpBar : DinoBehaviourScript
+public class HpBar : BaseBehavior
 {
     [Header("Hp Bar")]
     [SerializeField] protected SliderHp sliderHp;

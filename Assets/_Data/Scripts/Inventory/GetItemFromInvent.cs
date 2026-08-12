@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GetItemFromInvent : DinoBehaviourScript
+public abstract class GetItemFromInvent : BaseBehavior
 {
     [Header("GetItemFromInvent")]
     [SerializeField] protected Inventory inventory;
@@ -26,6 +26,5 @@ public abstract class GetItemFromInvent : DinoBehaviourScript
     }
 
     protected abstract void GetItemInventory();
-    
+
 }
- 

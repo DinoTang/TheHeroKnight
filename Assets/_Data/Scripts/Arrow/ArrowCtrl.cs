@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ArrowCtrl : DinoBehaviourScript
+public class ArrowCtrl : BaseBehavior
 {
     [SerializeField] protected ArrowDespawn arrowDespawn;
     [SerializeField] Transform shooter;

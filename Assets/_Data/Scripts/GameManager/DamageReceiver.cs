@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageReceiver : DinoBehaviourScript
+public class DamageReceiver : BaseBehavior
 {
     [Header("Damage Receiver")]
     [SerializeField] protected int hp;

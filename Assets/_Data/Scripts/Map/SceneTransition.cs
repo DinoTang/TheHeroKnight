@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : DinoBehaviourScript
+public class SceneTransition : BaseBehavior
 {
     [SerializeField] protected SceneName sceneName;
     [SerializeField] protected Vector2 playerPos;

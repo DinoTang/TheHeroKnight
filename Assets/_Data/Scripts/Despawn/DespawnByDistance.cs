@@ -16,7 +16,7 @@ public abstract class DespawnByDistance : Despawn
     protected void LoadCamera()
     {
         if (this.mainCam != null) return;
-        this.mainCam = FindObjectOfType<Camera>();
+        this.mainCam = FindAnyObjectByType<Camera>();
         Debug.Log(transform.name + ": LoadCamera", gameObject);
     }
 

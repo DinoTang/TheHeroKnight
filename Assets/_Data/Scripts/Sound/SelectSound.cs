@@ -9,8 +9,12 @@ public enum SelectSound
     Pickup,
     EnemyAttack,
     Dash,
+    SwitchWeapon,
     Combat,
     Attack2,
     MonsterBreath,
-    Victory
+    Victory,
+    ButtonClick,
+    OrcDeath,
+    SkeletonDeath,
 }

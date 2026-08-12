@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseToggle : DinoBehaviourScript
+public class BaseToggle : BaseBehavior
 {
     [Header("Base Toggle")]
     [SerializeField] protected Transform sceneTrans;

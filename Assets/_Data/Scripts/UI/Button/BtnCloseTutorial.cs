@@ -6,6 +6,7 @@ public class BtnCloseTutorial : BaseButton
 {
     protected override void OnClick()
     {
+        base.OnClick();
         UITutorial.Instance.Close();
     }
 }

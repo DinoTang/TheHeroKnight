@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCtrl : DinoBehaviourScript
+public class EnemyCtrl : BaseBehavior
 {
     [Header("Enemy Ctrl")]
     [SerializeField] protected Rigidbody2D rigid;

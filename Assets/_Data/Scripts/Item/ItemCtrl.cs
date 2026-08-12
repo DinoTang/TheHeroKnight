@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCtrl : DinoBehaviourScript
+public class ItemCtrl : BaseBehavior
 {
     [SerializeField] protected ItemDespawn itemDespawn;
     public ItemDespawn ItemDespawn => itemDespawn;

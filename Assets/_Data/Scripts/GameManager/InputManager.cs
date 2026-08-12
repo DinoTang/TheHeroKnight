@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : DinoBehaviourScript
+public class InputManager : BaseBehavior
 {
     [Header("Input Manager")]
     private int On = 0;

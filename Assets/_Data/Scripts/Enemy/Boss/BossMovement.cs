@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMovement : DinoBehaviourScript
+public class BossMovement : BaseBehavior
 {
     [SerializeField] protected Transform target;
     [SerializeField] protected BossAttack bossAttack;

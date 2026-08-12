@@ -26,6 +26,7 @@ public class BtnStart : BaseButton
     }
     protected override void OnClick()
     {
+        base.OnClick();
         this.PlayGame();
     }
     protected void PlayGame()

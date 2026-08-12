@@ -6,6 +6,7 @@ public class BtnOpenTutorial : BaseButton
 {
     protected override void OnClick()
     {
+        base.OnClick();
         UITutorial.Instance.Open();
     }
 }

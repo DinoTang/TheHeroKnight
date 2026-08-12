@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAbstract : DinoBehaviourScript
+public abstract class EnemyAbstract : BaseBehavior
 {
     [Header("Enemy Abstract")]
     [SerializeField] protected EnemyCtrl enemyCtrl;

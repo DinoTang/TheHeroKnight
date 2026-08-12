@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class BaseText : DinoBehaviourScript
+public abstract class BaseText : BaseBehavior
 {
     [Header("Base Text")]
     [SerializeField] protected TextMeshProUGUI text;

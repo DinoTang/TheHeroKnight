@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
-public class ItemPickupable : DinoBehaviourScript
+public class ItemPickupable : BaseBehavior
 {
     [SerializeField] protected ItemCtrl itemCtrl;
     [SerializeField] protected CircleCollider2D collide;

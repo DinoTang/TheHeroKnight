@@ -61,7 +61,7 @@ public class PlayerMovement : PlayerAbstract
     {
         if (this.playerCtrl.PlayerDamReceive.IsDead) return;
         if (this.playerCtrl.PlayerDash.IsDashing) return;
-        this._rb.velocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
+        this._rb.linearVelocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
 
     }
     protected void ChangeWeapon()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIDisplay : DinoBehaviourScript
+public class UIDisplay : BaseBehavior
 {
     protected override void Start()
     {

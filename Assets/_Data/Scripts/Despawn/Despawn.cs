@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Despawn : DinoBehaviourScript
+public abstract class Despawn : BaseBehavior
 {
     protected void FixedUpdate()
     {

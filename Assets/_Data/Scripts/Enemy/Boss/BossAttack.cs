@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttack : DinoBehaviourScript
+public class BossAttack : BaseBehavior
 {
     [SerializeField] protected BossAttackCtrl bossAttackCtrl;
     protected override void Start()

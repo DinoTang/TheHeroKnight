@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class BaseButton : DinoBehaviourScript
+public abstract class BaseButton : BaseBehavior
 {
     [Header("Base Button")]
     [SerializeField] protected Button button;
@@ -25,5 +25,8 @@ public abstract class BaseButton : DinoBehaviourScript
     {
         this.button.onClick.AddListener(this.OnClick);
     }
-    protected abstract void OnClick();
+    protected virtual void OnClick()
+    {
+        AudioManager.Instance.PlaySFX("ButtonClick");
+    }
 }

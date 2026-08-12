@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCam2War : DinoBehaviourScript
+public class MoveCam2War : BaseBehavior
 {
     [SerializeField] protected Camera mainCam;
     [SerializeField] protected FollowPlayer followPlayer;

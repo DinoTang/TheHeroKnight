@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHpBarCtrl : DinoBehaviourScript
+public class BossHpBarCtrl : BaseBehavior
 {
     [SerializeField] protected Canvas canvasBoss;
     protected override void LoadComponent()

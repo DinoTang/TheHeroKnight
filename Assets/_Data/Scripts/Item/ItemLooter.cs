@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
-public class ItemLooter : DinoBehaviourScript
+public class ItemLooter : BaseBehavior
 {
     [SerializeField] protected Inventory inventory;
     [SerializeField] protected CircleCollider2D collide;

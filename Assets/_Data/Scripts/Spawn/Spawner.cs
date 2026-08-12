@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Spawner : DinoBehaviourScript
+public abstract class Spawner : BaseBehavior
 {
     [Header("Spawner")]
     [SerializeField] protected Transform holder;

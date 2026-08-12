@@ -53,6 +53,7 @@ public class BtnRestart : BaseButton
     }
     protected override void OnClick()
     {
+        base.OnClick();
         this.ResetValues();
         this.BackFirstScene();
     }

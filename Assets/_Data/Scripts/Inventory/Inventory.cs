@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : DinoBehaviourScript
+public class Inventory : BaseBehavior
 {
     [SerializeField] protected int maxSlot = 10;
     [SerializeField] protected InventorySO inventorySO;

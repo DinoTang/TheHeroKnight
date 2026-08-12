@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnCtrl : DinoBehaviourScript
+public class EnemySpawnCtrl : BaseBehavior
 {
     [Header("Enemy SpawnCtrl")]
     [SerializeField] protected EnemySpawnPoint enemySpawnPoint;

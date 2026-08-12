@@ -48,7 +48,7 @@ public class PlayerDash : PlayerAbstract
 
         Vector2 dashDirection =
         new Vector2(this.playerCtrl.PlayerMovement.Horizontal, this.playerCtrl.PlayerMovement.Vertical).normalized;
-        this.playerCtrl.PlayerMovement._Rb.velocity = dashDirection * dashingPower;
+        this.playerCtrl.PlayerMovement._Rb.linearVelocity = dashDirection * dashingPower;
         this.trailRenderer.emitting = true;
         AudioManager.Instance.PlaySFX("Dash");
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : DinoBehaviourScript
+public class FollowPlayer : BaseBehavior
 {
     [SerializeField] protected Camera mainCam;
     [SerializeField] protected Transform player;

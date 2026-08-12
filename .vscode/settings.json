@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TheHeroKnight.sln"
+    "dotnet.defaultSolution": "TheHeroKnight.slnx"
 }

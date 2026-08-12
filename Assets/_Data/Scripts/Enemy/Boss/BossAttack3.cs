@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttack3 : DinoBehaviourScript
+public class BossAttack3 : BaseBehavior
 {
     [SerializeField] protected BossAttackCtrl bossAttackCtrl;
     [SerializeField] protected CapsuleCollider2D collide;
@@ -56,7 +56,7 @@ public class BossAttack3 : DinoBehaviourScript
         this.isWorking3 = true;
         this.bossAttackCtrl.angry = true;
         AudioManager.Instance.PlaySFX("MonsterBreath");
-        
+
         this.lineRenderer.enabled = true;
         float timer = 0f;
 

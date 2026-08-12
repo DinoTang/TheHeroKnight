@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnRandom : DinoBehaviourScript
+public class EnemySpawnRandom : BaseBehavior
 {
     [Header("Enemy Spawn Random")]
     [SerializeField] protected EnemySpawnCtrl enemySpawnCtrl;

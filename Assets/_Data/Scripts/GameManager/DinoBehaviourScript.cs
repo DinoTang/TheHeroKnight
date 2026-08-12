@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DinoBehaviourScript : MonoBehaviour
+public class BaseBehavior : MonoBehaviour
 {
     protected virtual void Awake()
     {

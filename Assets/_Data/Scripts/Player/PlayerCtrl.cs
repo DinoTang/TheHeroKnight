@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCtrl : DinoBehaviourScript
+public class PlayerCtrl : BaseBehavior
 {
     [Header("Player Ctrl")]
     protected static PlayerCtrl instance;
@@ -26,7 +26,7 @@ public class PlayerCtrl : DinoBehaviourScript
     protected override void Awake()
     {
         base.Awake();
-        if(PlayerCtrl.instance != null) Debug.Log("Only 1 PlayerCtrl allow to exist");
+        if (PlayerCtrl.instance != null) Debug.Log("Only 1 PlayerCtrl allow to exist");
         PlayerCtrl.instance = this;
     }
     protected override void LoadComponent()
