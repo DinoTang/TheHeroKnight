@@ -12,11 +12,25 @@ public class PlayerDash : PlayerAbstract
     [SerializeField] protected float dashingPower = 12f;
     [SerializeField] protected float dashingTime = 0.2f;
     [SerializeField] protected float dashingCooldown = 0.7f;
+
+    protected float cooldownTimer = 0f;
+
     public bool IsDashing => isDashing;
+    public float CooldownTimer => cooldownTimer;
+    public float DashingCooldown => dashingCooldown;
     protected void FixedUpdate()
     {
         this.GetInput();
         this.Dashing();
+        this.UpdateCooldown();
+    }
+
+    protected void UpdateCooldown()
+    {
+        if (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
     }
     protected override void LoadComponent()
     {
@@ -55,6 +69,8 @@ public class PlayerDash : PlayerAbstract
         yield return new WaitForSeconds(dashingTime);
         this.trailRenderer.emitting = false;
         this.isDashing = false;
+
+        this.cooldownTimer = dashingCooldown;
 
         yield return new WaitForSeconds(dashingCooldown);
         this.dash = true;

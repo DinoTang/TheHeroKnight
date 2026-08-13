@@ -3,4 +3,9 @@ using UnityEngine;
 public class PlayerPos : ScriptableObject
 {
     public Vector2 intialValue = new Vector2(-16, 3);
+
+    public void ResetValue()
+    {
+        this.intialValue = new Vector2(-16, 3);
+    }
 }

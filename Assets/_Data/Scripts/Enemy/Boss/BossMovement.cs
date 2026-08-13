@@ -30,7 +30,7 @@ public class BossMovement : BaseBehavior
     {
         this.Move();
     }
-    public bool CanMove()
+    public bool IsNearTarget()
     {
         this.distance = Vector2.Distance(transform.parent.position, target.position);
         if (this.distance <= this.distanceToTarget) return true;
@@ -38,7 +38,7 @@ public class BossMovement : BaseBehavior
     }
     protected void Move()
     {
-        if (!this.CanMove()) return;
+        if (!this.IsNearTarget()) return;
         this.bossAttack.enabled = true;
     }
 }

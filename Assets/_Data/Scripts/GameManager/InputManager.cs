@@ -31,6 +31,7 @@ public class InputManager : BaseBehavior
         this.GetInputChangeWeapon();
         this.GetInputDash();
         this.GetInputHealing();
+        this.GetInputPause();
     }
     public void SetAttack(bool _bool)
     {
@@ -73,5 +74,14 @@ public class InputManager : BaseBehavior
         if (Input.GetKeyUp(KeyCode.K)) return false;
 
         return false;
+    }
+
+    public void GetInputPause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIPausePanel.Instance.TogglePause();
+            GamePauseManager.Instance.TogglePause();
+        }
     }
 }

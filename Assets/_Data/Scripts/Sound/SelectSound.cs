@@ -17,4 +17,7 @@ public enum SelectSound
     ButtonClick,
     OrcDeath,
     SkeletonDeath,
+    BossRun,
+    AxeSpinning,
+    BossDeath
 }

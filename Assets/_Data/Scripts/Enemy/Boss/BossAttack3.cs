@@ -9,6 +9,7 @@ public class BossAttack3 : BaseBehavior
     [SerializeField] protected float disNewPlayerPos;
     [SerializeField] protected bool attack3;
     [SerializeField] protected LineRenderer lineRenderer;
+    [SerializeField] protected DamageReceiver playerDamReceive;
     private float warningDuration = 3f;
     public bool Attack3 => attack3;
     public bool isWorking3 = false;
@@ -19,6 +20,14 @@ public class BossAttack3 : BaseBehavior
         this.LoadBossAttackCtrl();
         this.LoadCollider();
         this.LoadLineRenderer();
+        this.LoadPlayerDamReceive();
+    }
+
+    protected void LoadPlayerDamReceive()
+    {
+        if (this.playerDamReceive != null) return;
+        this.playerDamReceive = GameObject.Find("Player").GetComponentInChildren<DamageReceiver>();
+        Debug.Log(transform.name + ": LoadPlayerDamReceive", gameObject);
     }
 
     protected void LoadBossAttackCtrl()
@@ -79,11 +88,23 @@ public class BossAttack3 : BaseBehavior
         //Tan cong
         this.bossAttackCtrl.angry = false;
         this.attack3 = true;
+        AudioManager.Instance.PlayAxeSpinning("AxeSpinning");
 
         this.disNewPlayerPos = this.bossAttackCtrl.DistanceToTarget(finalPlayerPos);
         while (disNewPlayerPos > 0)
         {
-            if (this.bossAttackCtrl.BossCtrl.BossDamReceive.IsDead) yield break;
+            if (this.bossAttackCtrl.BossCtrl.BossDamReceive.IsDead)
+            {
+                AudioManager.Instance.StopAxeSpinning();
+                yield break;
+            }
+
+            if (this.playerDamReceive.IsDead)
+            {
+                AudioManager.Instance.StopAxeSpinning();
+                yield break;
+            }
+
             this.collide.enabled = true;
             this.disNewPlayerPos = this.bossAttackCtrl.DistanceToTarget(finalPlayerPos);
             this.bossAttackCtrl.BossCtrl.BossFlipDirect.Flipping(this.bossAttackCtrl.BossAttack1.Player);
@@ -91,6 +112,7 @@ public class BossAttack3 : BaseBehavior
             yield return null;
         }
 
+        AudioManager.Instance.StopAxeSpinning();
         this.collide.enabled = false;
         this.attack3 = false;
         this.isWorking3 = false;

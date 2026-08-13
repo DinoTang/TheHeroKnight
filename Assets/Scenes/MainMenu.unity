@@ -2538,6 +2538,7 @@ MonoBehaviour:
   button: {fileID: 1227970769}
   transAnim: {fileID: 1910241766}
   canvas: {fileID: 422333198}
+  playerPosSO: {fileID: 11400000, guid: 4ef9d6e9f16e277449e42a6155d83420, type: 2}
 --- !u!1 &1250266030
 GameObject:
   m_ObjectHideFlags: 0

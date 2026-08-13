@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d550ee9ebd12943bb10e484b22038a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 10
   enemyCtrl: {fileID: 0}
   collide: {fileID: 3053020106793009953}
 --- !u!1 &3619305380292796115

@@ -28,8 +28,6 @@ public class ArrowDamSender : DamageSender
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.transform.parent == this.arrowCtrl.Shooter) return;
-        Debug.LogWarning(collider.transform.parent);
-        Debug.LogWarning(this.arrowCtrl.Shooter);
         SendToTransform(collider.transform);
     }
 }

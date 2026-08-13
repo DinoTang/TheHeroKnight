@@ -24,7 +24,7 @@ public class HpBar : BaseBehavior
     }
     protected virtual void HpShowing()
     {
-        
+
         this.sliderHp.SetMaxHp(this.hpMax);
         this.sliderHp.SetCurrentHp(this.hp);
     }

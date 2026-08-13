@@ -73,6 +73,9 @@ public class BossAttack1 : BaseBehavior
         this.disToPlayer = this.bossAttackCtrl.DistanceToTarget(this.player.position);
         this.bossAttackCtrl.angry = false;
         this.bossAttackCtrl.isMoving = true;
+        
+        // Phát âm thanh di chuyển
+        AudioManager.Instance.PlayMonsterRun("BossRun");
 
         while (disToPlayer >= 1)
         {
@@ -81,6 +84,9 @@ public class BossAttack1 : BaseBehavior
             transform.parent.parent.position = this.bossAttackCtrl.MoveToTarget(this.player.position);
             yield return null;
         }
+        
+        // Ngắt âm thanh di chuyển khi tới target
+        AudioManager.Instance.StopMonsterRun();
         this.bossAttackCtrl.isMoving = false;
 
         yield return new WaitForSeconds(0.2f);

@@ -55,8 +55,10 @@ public class BossAttack2 : BaseBehavior
     {
         for (int i = 0; i < 5; i++)
         {
+            this.collide.enabled = true;
             AudioManager.Instance.PlaySFX("Attack2");
             yield return new WaitForSeconds(1);
+            this.collide.enabled = false;
         }
     }
     protected IEnumerator DoWork2()
@@ -81,7 +83,6 @@ public class BossAttack2 : BaseBehavior
         this.sprite.enabled = false;
         this.bossAttackCtrl.angry = false;
         this.attack2 = true;
-        this.collide.enabled = true;
         yield return StartCoroutine(PlayAttack2Sound());
 
         this.attack2 = false;

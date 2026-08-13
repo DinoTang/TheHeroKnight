@@ -11,5 +11,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 473aa2cb15503fe4bac32a77be7b1feb, type: 3}
   m_Name: ArrowSO
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArrowSO
   arrowCounts: 20

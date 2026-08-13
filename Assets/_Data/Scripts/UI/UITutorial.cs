@@ -12,5 +12,4 @@ public class UITutorial : UIDisplay
         if (UITutorial.instance != null) Debug.LogWarning("Only 1 UITutorial allow to axist");
         UITutorial.instance = this;
     }
-    
 }

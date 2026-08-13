@@ -34,7 +34,7 @@ public class BossHpBarCtrl : BaseBehavior
             return;
         }
 
-        if (!BossCtrl.Instance.BossMovement.CanMove()) return;
+        if (!BossCtrl.Instance.BossMovement.IsNearTarget()) return;
         this.canvasBoss.gameObject.SetActive(true);
     }
 }

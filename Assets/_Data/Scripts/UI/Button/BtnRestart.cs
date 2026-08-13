@@ -64,8 +64,8 @@ public class BtnRestart : BaseButton
     protected void ResetValues()
     {
         this.arrowSO.arrowCounts = 20;
-        this.hpPotionSO.hpPotionCount = 3;
-        this.playerHpSO.currentHp = 10;
+        this.hpPotionSO.hpPotionCount = 5;
+        this.playerHpSO.currentHp = 100;
         this.playerPos.intialValue = new Vector2(-16, 3);
     }
 }

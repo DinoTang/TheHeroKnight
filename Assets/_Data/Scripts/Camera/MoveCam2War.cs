@@ -18,7 +18,7 @@ public class MoveCam2War : BaseBehavior
     }
     protected void Update()
     {
-        if (!BossCtrl.Instance.BossMovement.CanMove()) return;
+        if (!BossCtrl.Instance.BossMovement.IsNearTarget()) return;
         this.mainCam.orthographicSize = 10;
         this.followPlayer.enabled = false;
         this.followTarget.enabled = true;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDamReceive : DamageReceiver
 {
     [Header("Player Dam Receive")]
-    [SerializeField] protected int playerHpMax = 10;
+    [SerializeField] protected int playerHpMax = 100;
     [SerializeField] protected float playerHurtTime = 0.5f;
     [SerializeField] protected CapsuleCollider2D collide;
     [SerializeField] protected PlayerCtrl playerCtrl;
@@ -20,6 +20,7 @@ public class PlayerDamReceive : DamageReceiver
         base.LoadComponent();
         this.LoadCollider();
         this.LoadPlayerCtrl();
+        this.LoadPlayerHpSO();
     }
     protected override void ResetValue()
     {
@@ -38,6 +39,15 @@ public class PlayerDamReceive : DamageReceiver
         this.playerCtrl = GetComponentInParent<PlayerCtrl>();
         Debug.Log(transform.name + ": LoadPlayerCtrl", gameObject);
     }
+
+    protected void LoadPlayerHpSO()
+    {
+        if (this.playerHpSO != null) return;
+        this.playerHpSO = Resources.Load<PlayerHpSO>("GameData/PlayerHpSO");
+        Debug.Log(transform.name + ": LoadPlayerHpSO", gameObject);
+    }
+
+
     protected override void Reborn()
     {
         this.hpMax = this.playerHpMax;
