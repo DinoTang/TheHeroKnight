@@ -30,7 +30,6 @@ The game focuses on simple and responsive action gameplay, with mechanics such a
 - **C#**
 - **Unity UI**
 - **Animator**
-- **Particle System**
 - **Audio System**
 - **Unity Physics**
 - **Git / GitHub**
@@ -65,7 +64,7 @@ Throughout development, I worked on:
 
 Gameplay showcase:
 
-[Watch on YouTube](YOUR_YOUTUBE_LINK)
+[Watch on YouTube](https://www.youtube.com/watch?v=R1skQDlkqXw)
 
 ## 📦 Download
 
@@ -73,7 +72,7 @@ The latest playable Windows build is available in the **GitHub Releases** sectio
 
 You can also download the game from itch.io:
 
-[Play / Download The Hero Knight](YOUR_ITCH_IO_LINK)
+[Play / Download The Hero Knight](https://dinotang.itch.io/the-hero-knight)
 
 ### Installation
 
@@ -87,18 +86,3 @@ No installation is required.
 ## 💻 Platform
 
 - Windows
-
-## 📁 Project Structure
-
-```text
-Assets/
-├── Animations/
-├── Audio/
-├── Materials/
-├── Models/
-├── Prefabs/
-├── Scenes/
-├── Scripts/
-├── Shaders/
-├── UI/
-└── VFX/

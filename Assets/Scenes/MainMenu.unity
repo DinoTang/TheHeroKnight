@@ -2629,6 +2629,7 @@ GameObject:
   - component: {fileID: 979924153}
   - component: {fileID: 979924152}
   - component: {fileID: 979924151}
+  - component: {fileID: 979924154}
   m_Layer: 5
   m_Name: Btn
   m_TagString: Untagged
@@ -2737,6 +2738,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979924148}
   m_CullTransparentMesh: 1
+--- !u!114 &979924154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979924148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d6c52887164944c9eb1ff626e98c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BtnQuit
+  button: {fileID: 979924151}
 --- !u!1 &984644216
 GameObject:
   m_ObjectHideFlags: 0
