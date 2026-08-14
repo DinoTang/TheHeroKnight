@@ -18,6 +18,7 @@ public class InputManager : BaseBehavior
     public bool InputAttack => inputAttack;
     [SerializeField] protected bool inputDash = true;
     public bool InputDash => inputDash;
+    public bool IsEscape = true;
     protected override void Awake()
     {
         base.Awake();
@@ -78,6 +79,8 @@ public class InputManager : BaseBehavior
 
     public void GetInputPause()
     {
+        if (!this.IsEscape) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UIPausePanel.Instance.TogglePause();

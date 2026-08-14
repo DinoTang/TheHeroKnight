@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIAudioSettings : BaseBehavior
+public class UISettings : UIDisplay
 {
+    protected static UISettings instance;
+    public static UISettings Instance => instance;
+
     [SerializeField] protected Slider musicSlider;
     [SerializeField] protected Slider sfxSlider;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        if (UISettings.instance != null) Debug.LogWarning("Only 1 UISettings allow to axist");
+        UISettings.instance = this;
+    }
     protected override void Start()
     {
         base.Start();

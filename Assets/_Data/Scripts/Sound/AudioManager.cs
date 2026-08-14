@@ -40,7 +40,10 @@ public class AudioManager : BaseBehavior
 
         this.LoadVolume();
     }
-
+    public void SetFootStepSource(bool boolean)
+    {
+        this.footStepSource.enabled = boolean;
+    }
     protected override void Start()
     {
         base.Start();

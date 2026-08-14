@@ -22,6 +22,7 @@ public class BtnOpenPausePanel : BaseButton
     protected override void OnClick()
     {
         base.OnClick();
+        AudioManager.Instance.SetFootStepSource(false);
         this.pausePanel.Open();
         GamePauseManager.Instance.Pause();
     }

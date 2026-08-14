@@ -29,8 +29,14 @@ public class UIPausePanel : UIDisplay
     public void TogglePause()
     {
         if (IsPaused)
+        {
+            AudioManager.Instance.SetFootStepSource(true);
             this.Close();
+        }
         else
+        {
+            AudioManager.Instance.SetFootStepSource(false);
             this.Open();
+        }
     }
 }

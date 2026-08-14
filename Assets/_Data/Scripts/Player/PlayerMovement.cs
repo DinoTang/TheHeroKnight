@@ -61,8 +61,13 @@ public class PlayerMovement : PlayerAbstract
     {
         if (this.playerCtrl.PlayerDamReceive.IsDead) return;
         if (this.playerCtrl.PlayerDash.IsDashing) return;
-        this._rb.linearVelocity = new Vector3(this.horizontal * this.speed, this.vertical * this.speed, 0f);
 
+        Vector2 movement = new Vector2(this.horizontal, this.vertical);
+
+        // Giới hạn tốc độ khi di chuyển chéo
+        movement = Vector2.ClampMagnitude(movement, 1f);
+
+        this._rb.linearVelocity = movement * this.speed;
     }
     protected void ChangeWeapon()
     {
